@@ -62,12 +62,6 @@ jobs:
           New-Item -ItemType Directory -Force -Path build/windows | Out-Null
           godot --headless --path . --export-release "Windows Desktop" "build/windows/Qorix.exe"
 
-      - name: Build installer
-        uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
-        with:
-          path: tools/installer/qorix.iss
-          options: /DAppVersion=${{ env.APP_VERSION }}
-
       - name: Create portable archive
         shell: pwsh
         run: Compress-Archive -Path "build/windows/*" -DestinationPath "dist/Qorix-Portable-${{ env.APP_VERSION }}.zip"
