@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://cdwi8taovuwgl"
+path="res://.godot/imported/rectangle_boom_cursor.glsl-115d1936d8c414dd5fe8747922e4fbeb.res"
+
+[deps]
+
+source_file="res://resources/third_party/cursor-shaders/rectangle_boom_cursor.glsl"
+dest_files=["res://.godot/imported/rectangle_boom_cursor.glsl-115d1936d8c414dd5fe8747922e4fbeb.res"]
+
+[params]
+

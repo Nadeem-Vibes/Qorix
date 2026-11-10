@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Theme" uid="uid://daiset8sjhqyc" path="res://resources/themes/theme.tres" id="1_g3chd"]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+offset_right = 162.68
+offset_bottom = 40.0
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 2
+offset_top = 1.0
+offset_right = 1315.0
+offset_bottom = 129.0
+scale = Vector2(0.235, 0.235)
+theme = ExtResource("1_g3chd")
+theme_override_font_sizes/normal_font_size = 62
+bbcode_enabled = true
+scroll_active = true

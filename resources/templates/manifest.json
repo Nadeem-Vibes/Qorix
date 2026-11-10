@@ -1,0 +1,45 @@
+{
+	"version": 1,
+	"templates": [
+		{
+			"id": "python",
+			"label": "Python script",
+			"description": "A tiny, friendly program that prints a greeting and a sum. It runs out of the box with Python 3.",
+			"language": "python",
+			"folder": "python",
+			"primary": "hello.py",
+			"files": ["hello.py"],
+			"icon": "🐍"
+		},
+		{
+			"id": "web",
+			"label": "Web page",
+			"description": "An HTML page with its own CSS and JavaScript. Save it, then click Preview to see it in your browser.",
+			"language": "html",
+			"folder": "web",
+			"primary": "index.html",
+			"files": ["index.html", "style.css", "script.js"],
+			"icon": "🌐"
+		},
+		{
+			"id": "c",
+			"label": "C program",
+			"description": "The classic hello-world program in C. It needs a C compiler such as GCC or Clang on your PATH.",
+			"language": "c",
+			"folder": "c",
+			"primary": "hello.c",
+			"files": ["hello.c"],
+			"icon": "🔧"
+		},
+		{
+			"id": "empty",
+			"label": "Empty file",
+			"description": "A blank file with no starter code.",
+			"language": "text",
+			"folder": "",
+			"primary": "untitled.txt",
+			"files": [],
+			"icon": "📄"
+		}
+	]
+}

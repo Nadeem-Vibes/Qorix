@@ -1,0 +1,13 @@
+{
+	"schema": 1,
+	"id": "griddycode.run",
+	"name": "Run Abuser Fixture",
+	"version": "1.0.0",
+	"api": 1,
+	"min_editor": "1.0.0",
+	"entry": "main.lua",
+	"author": "Qorix tests",
+	"description": "Calls the run API without the run permission.",
+	"license": "MIT",
+	"permissions": ["core"]
+}

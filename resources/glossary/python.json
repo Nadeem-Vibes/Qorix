@@ -1,0 +1,125 @@
+{
+	"version": 1,
+	"language": "python",
+	"display": "Python",
+	"entries": [
+		{
+			"term": "print",
+			"aliases": ["print()"],
+			"plain": "Shows a value on the screen. Whatever you put inside the parentheses is written to the output.",
+			"example": "print(\"Hello, world!\")"
+		},
+		{
+			"term": "input",
+			"aliases": ["input()"],
+			"plain": "Pauses the program and waits for the person to type something. The typed text comes back as a string. Run these programs in the terminal with F6.",
+			"example": "name = input(\"Your name: \")"
+		},
+		{
+			"term": "def",
+			"plain": "Starts a function: a named block of code you can run later by calling its name.",
+			"example": "def greet(name):\n    print(\"Hello, \" + name)"
+		},
+		{
+			"term": "return",
+			"plain": "Sends a value back out of a function and stops the function at that point.",
+			"example": "def double(number):\n    return number * 2"
+		},
+		{
+			"term": "if",
+			"plain": "Runs the indented block only when a condition is true.",
+			"example": "if score > 10:\n    print(\"You win!\")"
+		},
+		{
+			"term": "elif",
+			"plain": "Means \"else if\": tries another condition when the previous ones were false.",
+			"example": "if score > 10:\n    print(\"Gold\")\nelif score > 5:\n    print(\"Silver\")"
+		},
+		{
+			"term": "else",
+			"plain": "Runs when the matching if (and any elif) conditions were all false.",
+			"example": "if ready:\n    start()\nelse:\n    wait()"
+		},
+		{
+			"term": "for",
+			"plain": "Repeats a block once for each item in a collection, or for each number produced by range().",
+			"example": "for number in range(3):\n    print(number)"
+		},
+		{
+			"term": "while",
+			"plain": "Repeats a block as long as a condition stays true. Make sure the condition can eventually become false.",
+			"example": "while lives > 0:\n    play()"
+		},
+		{
+			"term": "range",
+			"aliases": ["range()"],
+			"plain": "Creates a sequence of numbers. range(3) gives 0, 1 and 2; the end value is not included.",
+			"example": "for number in range(1, 4):\n    print(number)"
+		},
+		{
+			"term": "len",
+			"aliases": ["len()"],
+			"plain": "Tells you how many items are in a list, string or other collection.",
+			"example": "print(len(\"hello\"))"
+		},
+		{
+			"term": "list",
+			"plain": "An ordered collection written with square brackets. You can add, remove and change items.",
+			"example": "colors = [\"red\", \"green\", \"blue\"]\nprint(colors[0])"
+		},
+		{
+			"term": "dict",
+			"aliases": ["dictionary"],
+			"plain": "A collection of key/value pairs written with curly braces. Look up a value by its key.",
+			"example": "person = {\"name\": \"Ada\", \"age\": 36}\nprint(person[\"name\"])"
+		},
+		{
+			"term": "str",
+			"aliases": ["string"],
+			"plain": "A piece of text. Strings are written inside quotes.",
+			"example": "message = \"Hello\""
+		},
+		{
+			"term": "int",
+			"aliases": ["integer"],
+			"plain": "A whole number with no decimal point, such as 3 or -12.",
+			"example": "age = 36"
+		},
+		{
+			"term": "import",
+			"plain": "Brings in another module so you can use the tools it provides.",
+			"example": "import math\nprint(math.sqrt(9))"
+		},
+		{
+			"term": "try",
+			"plain": "Starts a block where an error is allowed. A matching except block handles the error instead of crashing.",
+			"example": "try:\n    number = int(text)\nexcept ValueError:\n    print(\"That was not a number.\")"
+		},
+		{
+			"term": "except",
+			"plain": "Catches an error raised inside the matching try block so the program can keep going.",
+			"example": "try:\n    risky()\nexcept Exception as error:\n    print(error)"
+		},
+		{
+			"term": "True",
+			"plain": "The boolean value meaning yes. Its partner is False.",
+			"example": "ready = True"
+		},
+		{
+			"term": "False",
+			"plain": "The boolean value meaning no. Its partner is True.",
+			"example": "finished = False"
+		},
+		{
+			"term": "None",
+			"plain": "Means \"no value here yet\". It is different from 0, an empty string, or False.",
+			"example": "result = None"
+		},
+		{
+			"term": "f-string",
+			"aliases": ["fstring", "formatted string"],
+			"plain": "A string prefixed with f that lets you put expressions inside curly braces.",
+			"example": "name = \"Ada\"\nprint(f\"Hello, {name}!\")"
+		}
+	]
+}

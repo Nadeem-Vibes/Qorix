@@ -1,0 +1,502 @@
+{
+  "version": 1,
+  "id": "griddycode.python_journey",
+  "title": "Python Journey",
+  "summary": "Cinco lecciones cortas: print, variables, tipos, condicionales y bucles. Cada lección escribe la línea objetivo y luego la hace suya.",
+  "lessons": [
+    {
+      "id": "01_hello",
+      "number": 1,
+      "title": "Hello, Qorix",
+      "summary": "Tu primera sentencia de Python imprime una línea de texto.",
+      "coach": "print() escribe texto en pantalla. El texto va entre comillas.",
+      "file": "python_journey/01_hello.py",
+      "starter": "",
+      "exercise": {
+        "title": "Di hola",
+        "prompt": "Escribe la línea, y luego añade un segundo print para Python mismo.",
+        "typing": {
+          "target": "print(\"Hello, Qorix!\")\n",
+          "display": {
+            "scope": "line",
+            "chars": 64
+          },
+          "marks": [
+            {
+              "id": "call",
+              "text": "print"
+            },
+            {
+              "id": "message",
+              "text": "\"Hello, Qorix!\""
+            }
+          ],
+          "hints": [
+            {
+              "on": "start",
+              "text": "Escribe la línea exactamente. El texto fantasma muestra el siguiente carácter."
+            },
+            {
+              "on": "mark",
+              "mark": "call",
+              "text": "print es una función: los paréntesis contienen su entrada."
+            },
+            {
+              "on": "mark",
+              "mark": "message",
+              "text": "Las comillas convierten esto en una cadena, no en una variable."
+            },
+            {
+              "on": "mistake",
+              "mistake": 2,
+              "text": "Revisa las comillas y el paréntesis de cierre."
+            },
+            {
+              "on": "complete",
+              "text": "Ese es todo el programa. Ahora añade una línea más."
+            }
+          ]
+        },
+        "freeform": {
+          "prompt": "Añade una segunda línea: print(\"Hello, Python!\")",
+          "example": "print(\"Hello, Qorix!\")\nprint(\"Hello, Python!\")\n",
+          "hint": "Conserva la primera línea. Añade otro print con su propio texto.",
+          "run": {
+            "timeout_ms": 15000,
+            "tests": [
+              {
+                "name": "Primera línea",
+                "type": "stdout_contains",
+                "value": "Hello, Qorix!"
+              },
+              {
+                "name": "Segunda línea",
+                "type": "stdout_contains",
+                "value": "Hello, Python!"
+              },
+              {
+                "name": "Salida limpia",
+                "type": "exit_code",
+                "value": 0
+              }
+            ]
+          },
+          "text": {
+            "tests": [
+              {
+                "name": "Primera línea",
+                "type": "contains",
+                "value": "print(\"Hello, Qorix!\")"
+              },
+              {
+                "name": "Segunda línea",
+                "type": "regex",
+                "value": "print\\(['\"]Hello, Python!['\"]\\)"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "02_variables",
+      "number": 2,
+      "title": "Variables",
+      "summary": "Un nombre guarda un valor, y print() puede mostrar el valor más tarde.",
+      "coach": "Una asignación pone el valor de la derecha en el nombre de la izquierda.",
+      "file": "python_journey/02_variables.py",
+      "starter": "",
+      "exercise": {
+        "title": "Nombre y edad",
+        "prompt": "Escribe la asignación, luego añade age = 36 y dos líneas print.",
+        "typing": {
+          "target": "name = \"Ada\"\n",
+          "display": {
+            "scope": "line",
+            "chars": 64
+          },
+          "marks": [
+            {
+              "id": "name",
+              "text": "name"
+            },
+            {
+              "id": "value",
+              "text": "\"Ada\""
+            }
+          ],
+          "hints": [
+            {
+              "on": "start",
+              "text": "Escribe la asignación exactamente. El signo igual no es una comparación aquí."
+            },
+            {
+              "on": "mark",
+              "mark": "name",
+              "text": "name es la etiqueta que eliges. No es texto, así que no lleva comillas."
+            },
+            {
+              "on": "mark",
+              "mark": "value",
+              "text": "Ada es texto, así que va entre comillas."
+            },
+            {
+              "on": "mistake",
+              "mistake": 2,
+              "text": "Revisa el signo igual y los dos pares de comillas."
+            },
+            {
+              "on": "complete",
+              "text": "El nombre ahora contiene Ada. Úsalo en el saludo impreso."
+            }
+          ]
+        },
+        "freeform": {
+          "prompt": "Añade age = 36, luego print(\"Hello, \" + name) y print(name, \"is\", age).",
+          "example": "name = \"Ada\"\nage = 36\nprint(\"Hello, \" + name)\nprint(name, \"is\", age)\n",
+          "hint": "Pon age en su propia línea. Las dos llamadas a print usan las variables en lugar de repetir sus valores.",
+          "run": {
+            "timeout_ms": 15000,
+            "tests": [
+              {
+                "name": "Saludo",
+                "type": "stdout_contains",
+                "value": "Hello, Ada"
+              },
+              {
+                "name": "Edad",
+                "type": "stdout_contains",
+                "value": "Ada is 36"
+              },
+              {
+                "name": "Salida limpia",
+                "type": "exit_code",
+                "value": 0
+              }
+            ]
+          },
+          "text": {
+            "tests": [
+              {
+                "name": "asignación de age",
+                "type": "regex",
+                "value": "age\\s*=\\s*36"
+              },
+              {
+                "name": "Saludo",
+                "type": "contains",
+                "value": "print("
+              },
+              {
+                "name": "reuso de name",
+                "type": "contains",
+                "value": "name"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "03_types",
+      "number": 3,
+      "title": "Tipos",
+      "summary": "Los números y el texto son tipos diferentes, y type() dice cuáles son.",
+      "coach": "type(value) devuelve el tipo del valor: int, float o str.",
+      "file": "python_journey/03_types.py",
+      "starter": "",
+      "exercise": {
+        "title": "Pregunta el tipo",
+        "prompt": "Escribe los tres valores, y luego imprime type(count), type(price) y type(label).",
+        "typing": {
+          "target": "count = 3\nprice = 2.5\nlabel = \"coffee\"\n",
+          "display": {
+            "scope": "line",
+            "chars": 64
+          },
+          "marks": [
+            {
+              "id": "int",
+              "text": "3"
+            },
+            {
+              "id": "float",
+              "text": "2.5"
+            },
+            {
+              "id": "str",
+              "text": "\"coffee\""
+            }
+          ],
+          "hints": [
+            {
+              "on": "start",
+              "text": "Tres líneas, un valor cada una. Los decimales usan un punto, no una coma."
+            },
+            {
+              "on": "mark",
+              "mark": "int",
+              "text": "3 no tiene punto decimal, así que Python lo guarda como int."
+            },
+            {
+              "on": "mark",
+              "mark": "float",
+              "text": "2.5 tiene un punto decimal, así que Python lo guarda como float."
+            },
+            {
+              "on": "mark",
+              "mark": "str",
+              "text": "El texto entre comillas es un str."
+            },
+            {
+              "on": "mistake",
+              "mistake": 2,
+              "text": "Revisa el punto decimal y las comillas alrededor de coffee."
+            },
+            {
+              "on": "complete",
+              "text": "Ahora pide a Python que informe de cada tipo."
+            }
+          ]
+        },
+        "freeform": {
+          "prompt": "Imprime type(count), type(price) y type(label), una por línea.",
+          "example": "count = 3\nprice = 2.5\nlabel = \"coffee\"\nprint(type(count))\nprint(type(price))\nprint(type(label))\n",
+          "hint": "Pon cada valor dentro de type(), y da a cada resultado su propia línea print.",
+          "run": {
+            "timeout_ms": 15000,
+            "tests": [
+              {
+                "name": "tipo int",
+                "type": "stdout_contains",
+                "value": "<class 'int'>"
+              },
+              {
+                "name": "tipo float",
+                "type": "stdout_contains",
+                "value": "<class 'float'>"
+              },
+              {
+                "name": "tipo str",
+                "type": "stdout_contains",
+                "value": "<class 'str'>"
+              },
+              {
+                "name": "Salida limpia",
+                "type": "exit_code",
+                "value": 0
+              }
+            ]
+          },
+          "text": {
+            "tests": [
+              {
+                "name": "tipo count",
+                "type": "contains",
+                "value": "type(count)"
+              },
+              {
+                "name": "tipo price",
+                "type": "contains",
+                "value": "type(price)"
+              },
+              {
+                "name": "tipo label",
+                "type": "contains",
+                "value": "type(label)"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "04_conditionals",
+      "number": 4,
+      "title": "Condicionales",
+      "summary": "if y else permiten que un programa elija qué líneas se ejecutan.",
+      "coach": "Python ejecuta el bloque indentado bajo if solo cuando la condición es verdadera.",
+      "file": "python_journey/04_conditionals.py",
+      "starter": "",
+      "exercise": {
+        "title": "Aprobado o reintento",
+        "prompt": "Escribe la rama if, luego cambia score a 40 y añade la rama else.",
+        "typing": {
+          "target": "score = 75\nif score >= 60:\n    print(\"pass\")\n",
+          "display": {
+            "scope": "line",
+            "chars": 72
+          },
+          "marks": [
+            {
+              "id": "condition",
+              "text": "score >= 60"
+            },
+            {
+              "id": "indent",
+              "text": "    print(\"pass\")"
+            }
+          ],
+          "hints": [
+            {
+              "on": "start",
+              "text": "La línea print está indentada con cuatro espacios. Consérvalos."
+            },
+            {
+              "on": "mark",
+              "mark": "condition",
+              "text": ">= significa mayor o igual que. 75 lo cumple."
+            },
+            {
+              "on": "mark",
+              "mark": "indent",
+              "text": "La línea indentada pertenece al bloque if."
+            },
+            {
+              "on": "mistake",
+              "mistake": 2,
+              "text": "Revisa los dos puntos al final de la línea if y los cuatro espacios antes de print."
+            },
+            {
+              "on": "complete",
+              "text": "La rama if funciona. Ahora haz que se ejecute la otra rama."
+            }
+          ]
+        },
+        "freeform": {
+          "prompt": "Cambia score a 40. Añade else: e print(\"retry\") con la misma sangría.",
+          "example": "score = 40\nif score >= 60:\n    print(\"pass\")\nelse:\n    print(\"retry\")\n",
+          "hint": "else va al mismo nivel que if. Su línea print está indentada con cuatro espacios.",
+          "run": {
+            "timeout_ms": 15000,
+            "tests": [
+              {
+                "name": "rama de reintento",
+                "type": "stdout_contains",
+                "value": "retry"
+              },
+              {
+                "name": "la rama de aprobado no se usa",
+                "type": "stdout_regex",
+                "value": "(?s)^(?!.*pass).*retry"
+              },
+              {
+                "name": "Salida limpia",
+                "type": "exit_code",
+                "value": 0
+              }
+            ]
+          },
+          "text": {
+            "tests": [
+              {
+                "name": "nuevo score",
+                "type": "regex",
+                "value": "score\\s*=\\s*40"
+              },
+              {
+                "name": "rama else",
+                "type": "contains",
+                "value": "else:"
+              },
+              {
+                "name": "print de reintento",
+                "type": "regex",
+                "value": "print\\(['\"]retry['\"]\\)"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "05_loops",
+      "number": 5,
+      "title": "Bucles",
+      "summary": "for repite un bloque una vez por cada valor de un rango.",
+      "coach": "range(1, 6) produce 1, 2, 3, 4 y 5. El valor de parada no se incluye.",
+      "file": "python_journey/05_loops.py",
+      "starter": "",
+      "exercise": {
+        "title": "Números al cuadrado",
+        "prompt": "Escribe el bucle, luego cambia print(number) a print(number * number).",
+        "typing": {
+          "target": "for number in range(1, 6):\n    print(number)\n",
+          "display": {
+            "scope": "line",
+            "chars": 64
+          },
+          "marks": [
+            {
+              "id": "range",
+              "text": "range(1, 6)"
+            },
+            {
+              "id": "body",
+              "text": "    print(number)"
+            }
+          ],
+          "hints": [
+            {
+              "on": "start",
+              "text": "La línea print dentro del bucle está indentada con cuatro espacios."
+            },
+            {
+              "on": "mark",
+              "mark": "range",
+              "text": "range(1, 6) se detiene antes de 6, así que el bucle corre cinco veces."
+            },
+            {
+              "on": "mark",
+              "mark": "body",
+              "text": "number toma cada valor sucesivamente."
+            },
+            {
+              "on": "mistake",
+              "mistake": 2,
+              "text": "Revisa los dos puntos después de range y los cuatro espacios antes de print."
+            },
+            {
+              "on": "complete",
+              "text": "El bucle funciona. Ahora hazlo imprimir los cuadrados en su lugar."
+            }
+          ]
+        },
+        "freeform": {
+          "prompt": "Cambia el cuerpo a print(number * number). Mantén el mismo range.",
+          "example": "for number in range(1, 6):\n    print(number * number)\n",
+          "hint": "Multiplica number por sí mismo dentro de print(). La sangría se queda igual.",
+          "run": {
+            "timeout_ms": 15000,
+            "tests": [
+              {
+                "name": "Cuadrados",
+                "type": "stdout_regex",
+                "value": "(?m)^1\\s+4\\s+9\\s+16\\s+25\\s*$"
+              },
+              {
+                "name": "Salida limpia",
+                "type": "exit_code",
+                "value": 0
+              }
+            ]
+          },
+          "text": {
+            "tests": [
+              {
+                "name": "range",
+                "type": "contains",
+                "value": "range(1, 6)"
+              },
+              {
+                "name": "print de cuadrado",
+                "type": "regex",
+                "value": "print\\(\\s*number\\s*\\*\\s*number\\s*\\)"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

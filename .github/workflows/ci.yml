@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+env:
+  GODOT_VERSION: "4.7.2"
+
+jobs:
+  test:
+    name: Headless tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Godot
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: ${{ env.GODOT_VERSION }}
+          use-dotnet: false
+          include-templates: false
+
+      - name: Import project
+        # Editor-only import can report non-fatal renderer/RID warnings on CI;
+        # the test suite below is the actual gate.
+        run: godot --headless --path . --import || true
+
+      - name: Run tests
+        # The runner is the gate: exit 0 means every check passed, exit 1 means
+        # at least one failed. Do not wrap this step in `|| true` and do not
+        # parse the log for warnings instead of honouring the exit code.
+        shell: bash
+        run: |
+          set -o pipefail
+          godot --headless --path . --script res://tests/test_runner.gd
+
+  export:
+    name: Debug export (Linux)
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Godot
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: ${{ env.GODOT_VERSION }}
+          use-dotnet: false
+          include-templates: true
+
+      - name: Import project
+        run: godot --headless --path . --import || true
+
+      - name: Export debug build
+        run: |
+          mkdir -p build
+          godot --headless --path . --export-debug "Linux/X11" build/qorix.x86_64
+
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: qorix-linux-debug
+          path: build/
+          if-no-files-found: error

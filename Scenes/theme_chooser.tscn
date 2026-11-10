@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2gyvklbna1ss"]
-
-[ext_resource type="Theme" uid="uid://daiset8sjhqyc" path="res://theme.tres" id="1_v6oin"]
-
-[node name="OptionButton" type="OptionButton"]
-offset_right = 477.0
-offset_bottom = 47.0
-theme = ExtResource("1_v6oin")

@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkx02j85qa1rm"]
+
+[ext_resource type="Script" path="res://src/workbench/update.gd" id="1_ug1sp"]
+[ext_resource type="Theme" uid="uid://daiset8sjhqyc" path="res://resources/themes/theme.tres" id="2_qh5es"]
+[ext_resource type="Script" path="res://src/editor/hyperlink.gd" id="2_w1buf"]
+
+[node name="Control" type="Control"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 26.0
+script = ExtResource("1_ug1sp")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 172.0
+offset_bottom = 23.0
+theme = ExtResource("2_qh5es")
+theme_override_font_sizes/normal_font_size = 13
+text = "Version: v1.0.3"
+scroll_active = false
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 1.0
+offset_right = 296.0
+offset_bottom = 25.0
+theme = ExtResource("2_qh5es")
+theme_override_font_sizes/font_size = 13
+text = "Check updates"
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 0
+offset_top = 27.0
+offset_right = 620.0
+offset_bottom = 31.0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 304.0
+offset_top = 4.0
+offset_right = 620.0
+offset_bottom = 24.0
+theme = ExtResource("2_qh5es")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+scroll_active = false
+script = ExtResource("2_w1buf")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+use_threads = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,13 @@
+{
+	"schema": 1,
+	"id": "bad.id",
+	"name": "Bad Fixture",
+	"version": "1.0",
+	"api": 1,
+	"min_editor": "1.0.0",
+	"entry": "../escape.lua",
+	"author": "",
+	"description": "x",
+	"permissions": ["core", "network", "made.up"],
+	"extra_field": true
+}

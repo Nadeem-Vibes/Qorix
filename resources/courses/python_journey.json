@@ -1,0 +1,248 @@
+{
+	"version": 1,
+	"id": "griddycode.python_journey",
+	"title": "Python Journey",
+	"summary": "Five short lessons: print, variables, types, conditionals and loops. Each lesson types the target line, then makes it yours.",
+	"lessons": [
+		{
+			"id": "01_hello",
+			"number": 1,
+			"title": "Hello, Qorix",
+			"summary": "Your first Python statement prints a line of text.",
+			"coach": "print() writes text to the screen. The text sits inside quotes.",
+			"file": "python_journey/01_hello.py",
+			"starter": "",
+			"exercise": {
+				"title": "Say hello",
+				"prompt": "Type the line, then add a second print for Python itself.",
+				"typing": {
+					"target": "print(\"Hello, Qorix!\")\n",
+					"display": { "scope": "line", "chars": 64 },
+					"marks": [
+						{ "id": "call", "text": "print" },
+						{ "id": "message", "text": "\"Hello, Qorix!\"" }
+					],
+					"hints": [
+						{ "on": "start", "text": "Type the line exactly. Ghost text shows the next character." },
+						{ "on": "mark", "mark": "call", "text": "print is a function: the parentheses hold its input." },
+						{ "on": "mark", "mark": "message", "text": "Quotes make this a string, not a variable." },
+						{ "on": "mistake", "mistake": 2, "text": "Check the quotes and the closing parenthesis." },
+						{ "on": "complete", "text": "That is the whole program. Now add one more line." }
+					]
+				},
+				"freeform": {
+					"prompt": "Add a second line: print(\"Hello, Python!\")",
+					"example": "print(\"Hello, Qorix!\")\nprint(\"Hello, Python!\")\n",
+					"hint": "Keep the first line. Add another print with its own text.",
+					"run": {
+						"timeout_ms": 15000,
+						"tests": [
+							{ "name": "first line", "type": "stdout_contains", "value": "Hello, Qorix!" },
+							{ "name": "second line", "type": "stdout_contains", "value": "Hello, Python!" },
+							{ "name": "clean exit", "type": "exit_code", "value": 0 }
+						]
+					},
+					"text": {
+						"tests": [
+							{ "name": "first line", "type": "contains", "value": "print(\"Hello, Qorix!\")" },
+							{ "name": "second line", "type": "regex", "value": "print\\(['\"]Hello, Python!['\"]\\)" }
+						]
+					}
+				}
+			}
+		},
+		{
+			"id": "02_variables",
+			"number": 2,
+			"title": "Variables",
+			"summary": "A name stores a value, and print() can show the value later.",
+			"coach": "An assignment puts the value on the right into the name on the left.",
+			"file": "python_journey/02_variables.py",
+			"starter": "",
+			"exercise": {
+				"title": "Name and age",
+				"prompt": "Type the assignment, then add age = 36 and two print lines.",
+				"typing": {
+					"target": "name = \"Ada\"\n",
+					"display": { "scope": "line", "chars": 64 },
+					"marks": [
+						{ "id": "name", "text": "name" },
+						{ "id": "value", "text": "\"Ada\"" }
+					],
+					"hints": [
+						{ "on": "start", "text": "Type the assignment exactly. The equals sign is not a comparison here." },
+						{ "on": "mark", "mark": "name", "text": "name is the label you choose. It is not text, so it has no quotes." },
+						{ "on": "mark", "mark": "value", "text": "Ada is text, so it stays inside quotes." },
+						{ "on": "mistake", "mistake": 2, "text": "Check the equals sign and both pairs of quotes." },
+						{ "on": "complete", "text": "The name now holds Ada. Reuse it in the printed greeting." }
+					]
+				},
+				"freeform": {
+					"prompt": "Add age = 36, then print(\"Hello, \" + name) and print(name, \"is\", age).",
+					"example": "name = \"Ada\"\nage = 36\nprint(\"Hello, \" + name)\nprint(name, \"is\", age)\n",
+					"hint": "Put age on its own line. The two print calls use the variables instead of repeating their values.",
+					"run": {
+						"timeout_ms": 15000,
+						"tests": [
+							{ "name": "greeting", "type": "stdout_contains", "value": "Hello, Ada" },
+							{ "name": "age", "type": "stdout_contains", "value": "Ada is 36" },
+							{ "name": "clean exit", "type": "exit_code", "value": 0 }
+						]
+					},
+					"text": {
+						"tests": [
+							{ "name": "age assignment", "type": "regex", "value": "age\\s*=\\s*36" },
+							{ "name": "greeting", "type": "contains", "value": "print(" },
+							{ "name": "name reuse", "type": "contains", "value": "name" }
+						]
+					}
+				}
+			}
+		},
+		{
+			"id": "03_types",
+			"number": 3,
+			"title": "Types",
+			"summary": "Numbers and text are different types, and type() names them.",
+			"coach": "type(value) returns the kind of value: int, float or str.",
+			"file": "python_journey/03_types.py",
+			"starter": "",
+			"exercise": {
+				"title": "Ask for the type",
+				"prompt": "Type the three values, then print type(count), type(price) and type(label).",
+				"typing": {
+					"target": "count = 3\nprice = 2.5\nlabel = \"coffee\"\n",
+					"display": { "scope": "line", "chars": 64 },
+					"marks": [
+						{ "id": "int", "text": "3" },
+						{ "id": "float", "text": "2.5" },
+						{ "id": "str", "text": "\"coffee\"" }
+					],
+					"hints": [
+						{ "on": "start", "text": "Three lines, one value each. Decimals use a dot, not a comma." },
+						{ "on": "mark", "mark": "int", "text": "3 has no decimal point, so Python stores it as an int." },
+						{ "on": "mark", "mark": "float", "text": "2.5 has a decimal point, so Python stores it as a float." },
+						{ "on": "mark", "mark": "str", "text": "Text in quotes is a str." },
+						{ "on": "mistake", "mistake": 2, "text": "Check the decimal point and the quotes around coffee." },
+						{ "on": "complete", "text": "Now ask Python to report each type." }
+					]
+				},
+				"freeform": {
+					"prompt": "Print type(count), type(price) and type(label), one per line.",
+					"example": "count = 3\nprice = 2.5\nlabel = \"coffee\"\nprint(type(count))\nprint(type(price))\nprint(type(label))\n",
+					"hint": "Put each value inside type(), then give each result its own print line.",
+					"run": {
+						"timeout_ms": 15000,
+						"tests": [
+							{ "name": "int type", "type": "stdout_contains", "value": "<class 'int'>" },
+							{ "name": "float type", "type": "stdout_contains", "value": "<class 'float'>" },
+							{ "name": "str type", "type": "stdout_contains", "value": "<class 'str'>" },
+							{ "name": "clean exit", "type": "exit_code", "value": 0 }
+						]
+					},
+					"text": {
+						"tests": [
+							{ "name": "count type", "type": "contains", "value": "type(count)" },
+							{ "name": "price type", "type": "contains", "value": "type(price)" },
+							{ "name": "label type", "type": "contains", "value": "type(label)" }
+						]
+					}
+				}
+			}
+		},
+		{
+			"id": "04_conditionals",
+			"number": 4,
+			"title": "Conditionals",
+			"summary": "if and else let a program choose which lines run.",
+			"coach": "Python runs the indented block under if only when the condition is true.",
+			"file": "python_journey/04_conditionals.py",
+			"starter": "",
+			"exercise": {
+				"title": "Pass or retry",
+				"prompt": "Type the if branch, then change score to 40 and add the else branch.",
+				"typing": {
+					"target": "score = 75\nif score >= 60:\n    print(\"pass\")\n",
+					"display": { "scope": "line", "chars": 72 },
+					"marks": [
+						{ "id": "condition", "text": "score >= 60" },
+						{ "id": "indent", "text": "    print(\"pass\")" }
+					],
+					"hints": [
+						{ "on": "start", "text": "The print line is indented by four spaces. Keep them." },
+						{ "on": "mark", "mark": "condition", "text": ">= means greater than or equal to. 75 satisfies it." },
+						{ "on": "mark", "mark": "indent", "text": "The indented line belongs to the if block." },
+						{ "on": "mistake", "mistake": 2, "text": "Check the colon at the end of the if line and the four spaces before print." },
+						{ "on": "complete", "text": "The if branch works. Now make the other branch run." }
+					]
+				},
+				"freeform": {
+					"prompt": "Change score to 40. Add else: and print(\"retry\") with the same indentation.",
+					"example": "score = 40\nif score >= 60:\n    print(\"pass\")\nelse:\n    print(\"retry\")\n",
+					"hint": "else sits at the same level as if. Its print line is indented by four spaces.",
+					"run": {
+						"timeout_ms": 15000,
+						"tests": [
+							{ "name": "retry branch", "type": "stdout_contains", "value": "retry" },
+							{ "name": "pass branch is not taken", "type": "stdout_regex", "value": "(?s)^(?!.*pass).*retry" },
+							{ "name": "clean exit", "type": "exit_code", "value": 0 }
+						]
+					},
+					"text": {
+						"tests": [
+							{ "name": "new score", "type": "regex", "value": "score\\s*=\\s*40" },
+							{ "name": "else branch", "type": "contains", "value": "else:" },
+							{ "name": "retry print", "type": "regex", "value": "print\\(['\"]retry['\"]\\)" }
+						]
+					}
+				}
+			}
+		},
+		{
+			"id": "05_loops",
+			"number": 5,
+			"title": "Loops",
+			"summary": "for repeats a block once for every value in a range.",
+			"coach": "range(1, 6) produces 1, 2, 3, 4 and 5. The stop value is not included.",
+			"file": "python_journey/05_loops.py",
+			"starter": "",
+			"exercise": {
+				"title": "Square numbers",
+				"prompt": "Type the loop, then change print(number) to print(number * number).",
+				"typing": {
+					"target": "for number in range(1, 6):\n    print(number)\n",
+					"display": { "scope": "line", "chars": 64 },
+					"marks": [
+						{ "id": "range", "text": "range(1, 6)" },
+						{ "id": "body", "text": "    print(number)" }
+					],
+					"hints": [
+						{ "on": "start", "text": "The print line inside the loop is indented by four spaces." },
+						{ "on": "mark", "mark": "range", "text": "range(1, 6) stops before 6, so the loop runs five times." },
+						{ "on": "mark", "mark": "body", "text": "number takes each value in turn." },
+						{ "on": "mistake", "mistake": 2, "text": "Check the colon after the range and the four spaces before print." },
+						{ "on": "complete", "text": "The loop works. Now make it print squares instead." }
+					]
+				},
+				"freeform": {
+					"prompt": "Change the body to print(number * number). Keep the same range.",
+					"example": "for number in range(1, 6):\n    print(number * number)\n",
+					"hint": "Multiply number by itself inside print(). The indentation stays the same.",
+					"run": {
+						"timeout_ms": 15000,
+						"tests": [
+							{ "name": "squares", "type": "stdout_regex", "value": "(?m)^1\\s+4\\s+9\\s+16\\s+25\\s*$" },
+							{ "name": "clean exit", "type": "exit_code", "value": 0 }
+						]
+					},
+					"text": {
+						"tests": [
+							{ "name": "range", "type": "contains", "value": "range(1, 6)" },
+							{ "name": "square print", "type": "regex", "value": "print\\(\\s*number\\s*\\*\\s*number\\s*\\)" }
+						]
+					}
+				}
+			}
+		}
+	]
+}

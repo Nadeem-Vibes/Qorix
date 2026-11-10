@@ -1,0 +1,13 @@
+{
+	"schema": 1,
+	"id": "griddycode.crash",
+	"name": "Crash Fixture",
+	"version": "1.0.0",
+	"api": 1,
+	"min_editor": "1.0.0",
+	"entry": "main.lua",
+	"author": "Qorix tests",
+	"description": "Raises a Lua error during activation.",
+	"license": "MIT",
+	"permissions": ["core"]
+}

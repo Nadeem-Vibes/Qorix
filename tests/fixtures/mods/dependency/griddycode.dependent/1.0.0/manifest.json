@@ -1,0 +1,16 @@
+{
+	"schema": 1,
+	"id": "griddycode.dependent",
+	"name": "Dependent Fixture",
+	"version": "1.0.0",
+	"api": 1,
+	"min_editor": "1.0.0",
+	"entry": "main.lua",
+	"author": "Qorix tests",
+	"description": "Requires griddycode.base so activation order can be asserted.",
+	"license": "MIT",
+	"permissions": ["core"],
+	"dependencies": {
+		"griddycode.base": "^1.0.0"
+	}
+}

@@ -1,0 +1,98 @@
+name: Mod Preview feedback
+description: Report a bug, documentation gap or UX problem in the Qorix mod Developer Preview (API 1.0).
+title: "[Mod Preview] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for testing the mod Developer Preview. API 1.0 is frozen; this form is for problems in the preview, not public distribution or signing (Phase 6).
+        Do **not** use this form for security vulnerabilities. Report those privately at https://github.com/Nadeem-vibes/Qorix/security/advisories/new.
+        Read `docs/mods/known-issues.md` first - installed mods do not hot-reload, manifest edits need a restart, and sensitive permissions start blocked until consent.
+  - type: input
+    id: editor-version
+    attributes:
+      label: Qorix version
+      description: The version shown by LuaSingleton / About, for example v1.4.0.
+      placeholder: v1.4.0
+    validations:
+      required: true
+  - type: dropdown
+    id: build
+    attributes:
+      label: Build
+      options:
+        - Normal build
+        - Developer mode (--mod-dev)
+        - Preview build (mod_preview / --mod-preview)
+        - Debug build from source
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      description: Version and, on Linux, the desktop session (X11 or Wayland).
+      placeholder: Windows 11 24H2 / Ubuntu 24.04 X11
+    validations:
+      required: true
+  - type: input
+    id: mod
+    attributes:
+      label: Mod id and version
+      description: Include whether it loaded from user://mods or user://mods_dev.
+      placeholder: example.hello 1.0.0, user://mods_dev
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Expected behavior and actual behavior. Include the exact error code and message if one was shown.
+      placeholder: |
+        Expected: ...
+        Actual: ...
+        Error: permission.consent_required: ...
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Start from launching the editor. Keep it minimal.
+      placeholder: |
+        1. Copy ... to ...
+        2. Start with --mod-dev
+        3. Open View -> Mods...
+        4. ...
+    validations:
+      required: true
+  - type: textarea
+    id: permissions
+    attributes:
+      label: Declared permissions and consent state
+      description: Paste the manifest permissions array and say which were granted, missing or denied.
+      render: json
+      placeholder: '["core", "documents.read"] — granted: core; missing: documents.read'
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log or failure-card text
+      description: Copy only the relevant lines. Remove private paths and tokens. No telemetry is collected automatically.
+      render: text
+  - type: textarea
+    id: minimal
+    attributes:
+      label: Smallest reproduction (optional)
+      description: The smallest manifest.json and main.lua that show the problem, if you can share them.
+      render: lua
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I checked the Developer Preview known-issues list.
+          required: true
+        - label: This is not a security vulnerability (those go to a private advisory).
+          required: true
+        - label: I removed private paths, tokens and unrelated files from the report.
+          required: true

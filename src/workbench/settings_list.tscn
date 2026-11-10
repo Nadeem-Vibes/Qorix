@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk43uvvc3j228"]
+
+[ext_resource type="Script" path="res://src/workbench/settings_list.gd" id="1_kx2vs"]
+
+[node name="SettingsList" type="ScrollContainer"]
+offset_right = 640.0
+offset_bottom = 920.0
+horizontal_scroll_mode = 0
+script = ExtResource("1_kx2vs")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 32

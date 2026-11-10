@@ -1,0 +1,13 @@
+{
+	"schema": 1,
+	"id": "griddycode.paths",
+	"name": "Path Escape Fixture",
+	"version": "1.0.0",
+	"api": 1,
+	"min_editor": "1.0.0",
+	"entry": "main.lua",
+	"author": "Qorix tests",
+	"description": "Tries to read outside its own mod folder.",
+	"license": "MIT",
+	"permissions": ["core"]
+}

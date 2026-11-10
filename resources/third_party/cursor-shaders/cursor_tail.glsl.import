@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://cnpwulmknf2sr"
+path="res://.godot/imported/cursor_tail.glsl-8692bef255b665b4cfff538d3fb0b8d5.res"
+
+[deps]
+
+source_file="res://resources/third_party/cursor-shaders/cursor_tail.glsl"
+dest_files=["res://.godot/imported/cursor_tail.glsl-8692bef255b665b4cfff538d3fb0b8d5.res"]
+
+[params]
+

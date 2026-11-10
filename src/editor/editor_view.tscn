@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://src/editor/editor_view.gd" id="1_view"]
+[ext_resource type="Theme" uid="uid://daiset8sjhqyc" path="res://resources/themes/theme.tres" id="2_theme"]
+
+[node name="EditorView" type="CodeEdit"]
+theme = ExtResource("2_theme")
+theme_override_colors/background_color = Color(0, 0, 0, 1)
+theme_override_colors/current_line_color = Color(0.168627, 0.168627, 0.168627, 1)
+theme_override_colors/caret_color = Color(0.321569, 0.545098, 1, 1)
+context_menu_enabled = true
+scroll_smooth = true
+scroll_v_scroll_speed = 150.0
+scroll_fit_content_height = true
+minimap_draw = false
+caret_blink = true
+highlight_all_occurrences = true
+highlight_current_line = true
+draw_tabs = true
+gutters_draw_line_numbers = true
+code_completion_enabled = true
+indent_automatic = true
+auto_brace_completion_enabled = true
+auto_brace_completion_highlight_matching = true
+script = ExtResource("1_view")

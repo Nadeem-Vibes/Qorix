@@ -25,4 +25,4 @@ If applicable, add screenshots to help explain your problem.
 
 **Desktop (please complete the following information):**
  - OS: [e.g. Linux Mint]
- - Version [e.g. v1.0.3] (tip: open the settings in GriddyCode to check)
+ - Version [e.g. v1.0.3] (tip: open the settings in Qorix to check)

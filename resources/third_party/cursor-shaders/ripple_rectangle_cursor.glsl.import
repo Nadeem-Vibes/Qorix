@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://00jt2jsfnf2n"
+path="res://.godot/imported/ripple_rectangle_cursor.glsl-9b6c3d3d13aea0d5ca091ea04057cee1.res"
+
+[deps]
+
+source_file="res://resources/third_party/cursor-shaders/ripple_rectangle_cursor.glsl"
+dest_files=["res://.godot/imported/ripple_rectangle_cursor.glsl-9b6c3d3d13aea0d5ca091ea04057cee1.res"]
+
+[params]
+

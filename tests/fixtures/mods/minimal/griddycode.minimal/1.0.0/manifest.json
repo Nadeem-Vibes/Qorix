@@ -1,0 +1,21 @@
+{
+	"schema": 1,
+	"id": "griddycode.minimal",
+	"name": "Minimal Fixture",
+	"version": "1.0.0",
+	"api": 1,
+	"min_editor": "1.0.0",
+	"entry": "main.lua",
+	"author": "Qorix tests",
+	"description": "Registers one command, one event subscription and one setting.",
+	"license": "MIT",
+	"permissions": ["core"],
+	"settings": [
+		{
+			"key": "greeting",
+			"type": "string",
+			"default": "hello",
+			"label": "Greeting"
+		}
+	]
+}

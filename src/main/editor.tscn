@@ -1,0 +1,271 @@
+[gd_scene format=3 uid="uid://bj6s526sep4xw"]
+
+[ext_resource type="Script" uid="uid://dviqamgvyvjsf" path="res://src/main/file_manager.gd" id="1_x00ag"]
+[ext_resource type="Theme" uid="uid://daiset8sjhqyc" path="res://resources/themes/theme.tres" id="2_bh428"]
+[ext_resource type="PackedScene" uid="uid://dk43uvvc3j228" path="res://src/workbench/settings_list.tscn" id="5_6usn0"]
+[ext_resource type="Script" uid="uid://bnmyo3bxnn448" path="res://src/workbench/file_dialog.gd" id="5_bhd70"]
+[ext_resource type="PackedScene" uid="uid://c2gyvklbna1ss" path="res://src/workbench/theme_chooser.tscn" id="6_10xx2"]
+[ext_resource type="VideoStream" uid="uid://defh6am77wyv3" path="res://resources/videos/jumping_cat.ogv" id="7_aq7lb"]
+[ext_resource type="Shader" uid="uid://cppw0w0h42p7p" path="res://resources/shaders/greenscreen.gdshader" id="7_gkiie"]
+[ext_resource type="Script" uid="uid://b5tc2ctikrx1q" path="res://src/workbench/theme_chooser.gd" id="9_ba634"]
+[ext_resource type="Script" uid="uid://boi35p7g4fu7u" path="res://src/editor/hyperlink.gd" id="11_m1mse"]
+[ext_resource type="Script" uid="uid://bu7ki7fja41bq" path="res://src/editor/camera.gd" id="12_x8fwh"]
+[ext_resource type="PackedScene" uid="uid://bjnhor4pywtgc" path="res://src/editor/comments.tscn" id="14_r0w3a"]
+[ext_resource type="AudioStream" uid="uid://bw4elmrq7utxl" path="res://resources/music/ES_Social Feedia - Heyson.wav" id="14_tdfqv"]
+[ext_resource type="Script" uid="uid://b721u1kiudsvc" path="res://src/editor/editor_host.gd" id="15_host"]
+[ext_resource type="Script" uid="uid://dvbm740hwbh4p" path="res://src/editor/cursor_effect.gd" id="16_cursor"]
+[ext_resource type="Shader" uid="uid://bbc4hlg8r2mc8" path="res://resources/shaders/bloom.gdshader" id="18_bloom"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h17vr"]
+shader = ExtResource("7_gkiie")
+shader_parameter/key_color = Color(0.00392157, 0.701961, 0.25098, 1)
+shader_parameter/similarity = 0.18
+shader_parameter/smoothness = 0.08
+shader_parameter/spill = 0.04
+
+[sub_resource type="Curve2D" id="Curve2D_stitx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wbxv0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bloom"]
+shader = ExtResource("18_bloom")
+shader_parameter/threshold = 0.55
+shader_parameter/intensity = 1.5
+shader_parameter/radius = 7.0
+
+[node name="Editor" type="Node2D" unique_id=1041536909]
+script = ExtResource("1_x00ag")
+
+[node name="ExternalBackground" type="ColorRect" parent="." unique_id=1153289964]
+unique_name_in_owner = true
+offset_left = -2046.0
+offset_top = -742.0
+offset_right = 4452.0
+offset_bottom = 51258.0
+color = Color(0, 0, 0, 1)
+
+[node name="EditorHost" type="Control" parent="." unique_id=44085165]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 2044.0
+offset_bottom = 44630.0
+script = ExtResource("15_host")
+
+[node name="CursorEffect" type="ColorRect" parent="." unique_id=1799221155]
+offset_right = 1.0
+offset_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("16_cursor")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1423195822]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+visible = false
+offset_left = -368.0
+offset_top = -207.0
+offset_right = 2263.0
+offset_bottom = 1342.0
+
+[node name="FileDialog" type="RichTextLabel" parent="." unique_id=1205924699]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -492.0
+offset_top = 119.0
+offset_right = -30.0
+offset_bottom = 8889.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_bh428")
+text = "gpake
+gka
+ekga
+eogka
+ek g
+paekga
+epk 
+gake 
+g"
+autowrap_mode = 0
+script = ExtResource("5_bhd70")
+
+[node name="AutoSaveTimer" type="Timer" parent="." unique_id=1496565796]
+wait_time = 5.0
+autostart = true
+
+[node name="Settings" type="Node2D" parent="." unique_id=348589332]
+unique_name_in_owner = true
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Settings" unique_id=48314257]
+material = SubResource("ShaderMaterial_h17vr")
+offset_left = 535.0
+offset_top = 178.0
+offset_right = 1015.0
+offset_bottom = 642.0
+audio_track = 128
+stream = ExtResource("7_aq7lb")
+autoplay = false
+loop = true
+
+[node name="SettingsList" parent="Settings" unique_id=94307153 instance=ExtResource("5_6usn0")]
+unique_name_in_owner = true
+offset_left = -171.31
+offset_top = -158.0
+offset_right = 468.69
+offset_bottom = 762.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ThemePicker" type="Node2D" parent="." unique_id=875376397]
+unique_name_in_owner = true
+
+[node name="ThemeChooser" parent="ThemePicker" unique_id=1286623686 instance=ExtResource("6_10xx2")]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+offset_left = -750.0
+offset_top = 17.0
+offset_right = -718.0
+offset_bottom = 37.0
+script = ExtResource("9_ba634")
+
+[node name="Info" type="Node2D" parent="." unique_id=792649297]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-1691.12, 0)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Info" unique_id=2005076398]
+offset_left = 285.0
+offset_top = 28.0
+offset_right = 4821.0
+offset_bottom = 1219.0
+scale = Vector2(0.235, 0.235)
+theme = ExtResource("2_bh428")
+theme_override_font_sizes/normal_font_size = 376
+bbcode_enabled = true
+text = "[color=#c9daf8]Q[/color][color=#85c6ff]orix[/color]"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Info" unique_id=638354270]
+offset_left = 293.0
+offset_top = 165.0
+offset_right = 6395.0
+offset_bottom = 4616.0
+scale = Vector2(0.235, 0.235)
+theme = ExtResource("2_bh428")
+theme_override_font_sizes/normal_font_size = 121
+bbcode_enabled = true
+text = "Qorix is an extensively modified, independently developed fork of [url=https://github.com/face-hh/griddycode][color=#b4a7d6]GriddyCode[/color][/url], the original project by [url=https://youtube.com/facedevstuff][color=#b4a7d6]Face[/color][/url], licensed under the Apache License 2.0 and maintained & extended by [url=https://github.com/Nadeem-vibes][color=#b4a7d6]Mohamed Nadeem[/color][/url].
+
+[font_size=85][color=#b6b6b6]The upstream project went unmaintained for over 2 years. The original code belongs to [url=https://github.com/face-hh/griddycode][color=#b4a7d6]Face[/color][/url]; Qorix adds the integrated terminal, the code runner & more. Face does not endorse Qorix.[/color][/font_size]
+
+Shortcuts:
+CTRL + O     - open file picker. Navigate with ↑ ↓ ⏎
+CTRL + SHIFT + O - open a folder as the workspace.
+CTRL + SHIFT + E - toggle the file explorer.
+CTRL + SHIFT + F - search across files.
+CTRL + ,     - open settings.
+CTRL + T     - open theme picker.
+CTRL + I     - open this panel.
+CTRL + L     - open the comments.
+CTRL + S     - save the current file.
+CTRL + SHIFT + S - save as (choose a new path).
+CTRL + N     - new untitled file.
+CTRL + SHIFT + T - reopen the last closed tab.
+CTRL + Z     - undo.
+CTRL + Y     - redo.
+CTRL + = / - - zoom the view in / out.
+CTRL + W     - close the current file.
+CTRL + F     - find in file.
+CTRL + H     - open find & replace.
+CTRL + P     - quick open files.
+CTRL + SHIFT + P - command palette.
+CTRL + `     - toggle terminal.
+CTRL + SHIFT + ` - new terminal tab.
+CTRL + ALT + K - edit keyboard shortcuts.
+CTRL + ALT + N - run the current file (alternate shortcut).
+CTRL + ALT + M - stop the run (alternate shortcut).
+F5           - run the current file.
+SHIFT + F5   - stop the run.
+[font_size=85]
+[color=#b6b6b6] Copyright (c) 2024 Face and the GriddyCode contributors.
+Qorix modifications copyright (c) 2026 Nadeem-vibes and the Qorix contributors.
+
+ * Licensed under the Apache License, Version 2.0 (see the LICENSE file).
+ * https://www.apache.org/licenses/LICENSE-2.0
+
+ * You may modify, fork and redistribute Qorix under those terms.
+ * Bundled third-party components keep their own licenses (see resources/third_party/).
+
+ * Qorix is a community-driven project, offered as-is, and users are solely
+ * responsible for compliance with applicable laws and regulations.
+
+ * In no event shall Nadeem-vibes or the Qorix contributors be liable for
+ * any claims, damages, or other liability, whether in an action of contract,
+ * tort, or otherwise, arising from, out of, or in connection with Qorix or
+ * the use or other dealings in Qorix.
+
+ * The original GriddyCode project remains the property of its authors;
+ * Qorix claims no ownership of upstream code. Use Qorix responsibly and
+ * adhere to the laws of your jurisdiction.
+[/color]
+[/font_size]"
+script = ExtResource("11_m1mse")
+
+[node name="Misc" type="Node2D" parent="." unique_id=601661052]
+
+[node name="Cam" type="Camera2D" parent="Misc" unique_id=2095578046]
+unique_name_in_owner = true
+position = Vector2(92, 48)
+zoom = Vector2(10, 10)
+script = ExtResource("12_x8fwh")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=2083878780]
+curve = SubResource("Curve2D_stitx")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1054291295]
+
+[node name="ShaderLayer" type="ColorRect" parent="." unique_id=1241778232]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_wbxv0")
+offset_left = -2011.0
+offset_top = -700.0
+offset_right = 4408.0
+offset_bottom = 5193.0
+mouse_filter = 2
+color = Color(0.46455, 0.475028, 0.740924, 1)
+
+[node name="BloomLayer" type="ColorRect" parent="." unique_id=774389488]
+visible = false
+material = SubResource("ShaderMaterial_bloom")
+offset_left = -2011.0
+offset_top = -700.0
+offset_right = 4408.0
+offset_bottom = 5193.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=889573930]
+stream = ExtResource("14_tdfqv")
+
+[node name="AudioTimer" type="Timer" parent="." unique_id=431327083]
+wait_time = 0.5
+
+[node name="Comments" parent="." unique_id=1974565347 instance=ExtResource("14_r0w3a")]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+offset_left = 772.0
+offset_top = 2.0
+offset_right = 772.0
+offset_bottom = 2.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=340545734]
+layer = 2
+transform = Transform2D(1, 0, 0, 1, 100, 129.5)
+
+[connection signal="ui_close" from="FileDialog" to="." method="_on_file_dialog_ui_close"]
+[connection signal="timeout" from="AutoSaveTimer" to="." method="_on_auto_save_timer_timeout"]
+[connection signal="item_focused" from="ThemePicker/ThemeChooser" to="." method="_on_theme_chooser_item_focused"]
+[connection signal="item_selected" from="ThemePicker/ThemeChooser" to="." method="_on_theme_chooser_item_selected"]

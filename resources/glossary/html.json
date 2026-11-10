@@ -1,0 +1,110 @@
+{
+	"version": 1,
+	"language": "html",
+	"display": "HTML",
+	"entries": [
+		{
+			"term": "html",
+			"plain": "The outer container of a web page. Everything the browser reads goes inside it.",
+			"example": "<html>\n  <body>Hello!</body>\n</html>"
+		},
+		{
+			"term": "head",
+			"plain": "The part of the page that describes it: title, character set, styles and scripts. It is not shown as page content.",
+			"example": "<head>\n  <title>My page</title>\n</head>"
+		},
+		{
+			"term": "body",
+			"plain": "The visible part of the page. Headings, paragraphs, images and buttons live here.",
+			"example": "<body>\n  <h1>Hello!</h1>\n</body>"
+		},
+		{
+			"term": "div",
+			"plain": "A generic box used to group other elements so you can style or arrange them together.",
+			"example": "<div class=\"card\">...</div>"
+		},
+		{
+			"term": "span",
+			"plain": "A small inline container for a piece of text or content, usually so part of a line can be styled.",
+			"example": "<p>A <span class=\"highlight\">word</span>.</p>"
+		},
+		{
+			"term": "p",
+			"aliases": ["paragraph"],
+			"plain": "A paragraph of text. Browsers add space above and below it.",
+			"example": "<p>This is a paragraph.</p>"
+		},
+		{
+			"term": "h1",
+			"aliases": ["heading"],
+			"plain": "The most important heading on the page. h2 to h6 are progressively smaller section headings.",
+			"example": "<h1>My first page</h1>"
+		},
+		{
+			"term": "a",
+			"aliases": ["link", "anchor"],
+			"plain": "A link. The href attribute says where clicking it goes.",
+			"example": "<a href=\"https://example.com\">Visit example</a>"
+		},
+		{
+			"term": "img",
+			"aliases": ["image"],
+			"plain": "Shows an image. The src attribute points at the image file and alt describes it for screen readers.",
+			"example": "<img src=\"photo.png\" alt=\"A sunset\">"
+		},
+		{
+			"term": "ul",
+			"aliases": ["unordered list", "bullet list"],
+			"plain": "A bulleted list. Put each item in an li element inside it.",
+			"example": "<ul>\n  <li>First</li>\n  <li>Second</li>\n</ul>"
+		},
+		{
+			"term": "li",
+			"aliases": ["list item"],
+			"plain": "One item inside a ul or ol list.",
+			"example": "<li>One item</li>"
+		},
+		{
+			"term": "button",
+			"plain": "A clickable button. JavaScript can listen for its click and react.",
+			"example": "<button id=\"cheer\">Click me</button>"
+		},
+		{
+			"term": "script",
+			"plain": "Loads JavaScript into the page, either inline or from a src file.",
+			"example": "<script src=\"script.js\"></script>"
+		},
+		{
+			"term": "link",
+			"plain": "In the head, links an external file such as a stylesheet or icon to the page.",
+			"example": "<link rel=\"stylesheet\" href=\"style.css\">"
+		},
+		{
+			"term": "meta",
+			"plain": "Describes the page to the browser, for example its character set or how mobile screens should scale it.",
+			"example": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
+		},
+		{
+			"term": "class",
+			"aliases": ["class attribute"],
+			"plain": "A label you give one or more elements so CSS and JavaScript can find and style them.",
+			"example": "<p class=\"message\">Hello</p>"
+		},
+		{
+			"term": "id",
+			"aliases": ["id attribute"],
+			"plain": "A unique name for one element on the page. JavaScript often uses it to find that exact element.",
+			"example": "<button id=\"cheer\">Click</button>"
+		},
+		{
+			"term": "href",
+			"plain": "The destination of a link, or the file a stylesheet should load.",
+			"example": "<a href=\"page.html\">Next page</a>"
+		},
+		{
+			"term": "src",
+			"plain": "The address of a file an element should load, such as an image or a script.",
+			"example": "<script src=\"script.js\"></script>"
+		}
+	]
+}

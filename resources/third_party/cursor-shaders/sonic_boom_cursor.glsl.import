@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://u2xswfuewn0g"
+path="res://.godot/imported/sonic_boom_cursor.glsl-ab23e818dccfa2d271f8f099b3f2cb5c.res"
+
+[deps]
+
+source_file="res://resources/third_party/cursor-shaders/sonic_boom_cursor.glsl"
+dest_files=["res://.godot/imported/sonic_boom_cursor.glsl-ab23e818dccfa2d271f8f099b3f2cb5c.res"]
+
+[params]
+

@@ -1,0 +1,726 @@
+{
+  "version": 1,
+  "settings": {
+    "min_chars": 24,
+    "ngram_size": 3,
+    "auto_confidence": 0.45,
+    "auto_margin": 0.06,
+    "max_chars": 16000
+  },
+  "profiles": [
+    {
+      "id": "python",
+      "display": "Python",
+      "extensions": ["py", "pyw", "pyi"],
+      "run_language": "python",
+      "highlight": "py",
+      "auto": true,
+      "markers": [
+        ["^#!.*\\bpython[0-9.]*", 9.0, "python shebang"],
+        ["^\\s*(async\\s+)?def\\s+\\w+\\s*\\(", 3.5, "def"],
+        ["^\\s*(from\\s+[\\w.]+\\s+import|import\\s+[\\w.]+)", 2.5, "import statement"],
+        ["^\\s*(elif|except|finally)\\b", 2.0, "elif/except"],
+        ["\\bself\\.", 1.5, "self."],
+        ["__name__\\s*==\\s*['\"]__main__['\"]", 6.0, "__main__ guard"],
+        ["\\b(None|True|False)\\b", 1.0, "Python literals"],
+        ["^\\s*@\\w+(\\([^)]*\\))?\\s*$", 1.2, "decorator"],
+        ["\\bf[\"'][^\"'\\n]*\\{[^}\\n]+\\}", 1.5, "f-string"]
+      ],
+      "samples": [
+        "def load_users(path):\n    with open(path, encoding=\"utf-8\") as handle:\n        return [line.strip() for line in handle if line.strip()]\n\nclass UserService:\n    def __init__(self, repo):\n        self.repo = repo\n\n    async def get(self, user_id):\n        if user_id is None:\n            raise ValueError(\"missing id\")\n        return await self.repo.find(user_id)\n",
+        "import sys\n\ndef main(argv):\n    total = sum(int(value) for value in argv[1:])\n    print(f\"total={total}\")\n    return 0\n\nif __name__ == \"__main__\":\n    sys.exit(main(sys.argv))\n"
+      ]
+    },
+    {
+      "id": "javascript",
+      "display": "JavaScript",
+      "extensions": ["js", "mjs", "cjs", "jsx"],
+      "run_language": "javascript",
+      "highlight": "js",
+      "auto": true,
+      "markers": [
+        ["\\b(const|let|var)\\s+[A-Za-z_$]", 2.0, "const/let"],
+        ["=>\\s*[{(]?", 1.8, "arrow function"],
+        ["\\bconsole\\.(log|error|warn)\\s*\\(", 3.0, "console.log"],
+        ["\\bfunction\\s+\\w+\\s*\\(", 2.0, "function"],
+        ["===", 1.2, "strict equality"],
+        ["\\brequire\\s*\\(['\"]", 3.0, "require"],
+        ["\\bmodule\\.exports\\b", 3.0, "module.exports"],
+        ["\\bimport\\s+.+\\s+from\\s+['\"]", 1.8, "import from"],
+        ["^#!.*\\bnode\\b", 9.0, "node shebang"]
+      ],
+      "samples": [
+        "const fs = require(\"fs\");\n\nfunction readConfig(path) {\n  const text = fs.readFileSync(path, \"utf8\");\n  return JSON.parse(text);\n}\n\nconst config = readConfig(\"config.json\");\nconsole.log(`loaded ${Object.keys(config).length} keys`);\nmodule.exports = { readConfig };\n",
+        "import { useState } from \"react\";\n\nexport default function Counter() {\n  const [count, setCount] = useState(0);\n  return <button onClick={() => setCount(count + 1)}>{count}</button>;\n}\n"
+      ]
+    },
+    {
+      "id": "typescript",
+      "display": "TypeScript",
+      "extensions": ["ts", "tsx", "mts", "cts"],
+      "run_language": "typescript",
+      "highlight": "js",
+      "auto": true,
+      "markers": [
+        ["\\binterface\\s+\\w+\\s*\\{", 4.0, "interface"],
+        [":\\s*(string|number|boolean|void|any|unknown|never|object)\\b", 2.5, "type annotation"],
+        ["\\btype\\s+\\w+\\s*=", 3.0, "type alias"],
+        ["\\b(public|private|protected|readonly)\\s+\\w+", 2.0, "access modifier"],
+        ["\\bimplements\\s+\\w+", 2.5, "implements"],
+        ["\\benum\\s+\\w+", 2.5, "enum"],
+        ["<\\w+>\\s*\\(", 1.2, "generic call"]
+      ],
+      "samples": [
+        "interface User {\n  id: number;\n  name: string;\n  email?: string;\n}\n\nexport async function fetchUser(id: number): Promise<User> {\n  const response = await fetch(`/api/users/${id}`);\n  const data: User = await response.json();\n  return data;\n}\n",
+        "type Status = \"idle\" | \"running\" | \"done\";\n\nclass Runner<T> {\n  private items: T[] = [];\n\n  add(item: T): void {\n    this.items.push(item);\n  }\n\n  all(): readonly T[] {\n    return this.items;\n  }\n}\n"
+      ]
+    },
+    {
+      "id": "java",
+      "display": "Java",
+      "extensions": ["java"],
+      "run_language": "java",
+      "highlight": "java",
+      "auto": true,
+      "markers": [
+        ["\\bpublic\\s+static\\s+void\\s+main\\s*\\(", 6.0, "main method"],
+        ["\\bSystem\\.out\\.print(ln)?\\s*\\(", 3.5, "System.out"],
+        ["^\\s*import\\s+java\\.[\\w.]+;", 3.0, "java import"],
+        ["\\b(public|private|protected)\\s+(static\\s+)?[A-Z]\\w*(<[^>]+>)?\\s+\\w+", 1.5, "member declaration"],
+        ["@Override\\b", 2.5, "@Override"],
+        ["\\bclass\\s+\\w+(\\.\\w+)*\\s*\\{", 1.8, "class"],
+        ["\\bList<\\w+>", 1.5, "generic collection"]
+      ],
+      "samples": [
+        "package com.example.app;\n\nimport java.util.List;\n\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, world\");\n        List<String> names = List.of(\"Ada\", \"Linus\");\n        names.forEach(name -> System.out.println(name));\n    }\n}\n",
+        "import java.util.ArrayList;\n\npublic final class Store {\n    private final ArrayList<String> items = new ArrayList<>();\n\n    @Override\n    public String toString() {\n        return String.join(\",\", items);\n    }\n}\n"
+      ]
+    },
+    {
+      "id": "c",
+      "display": "C",
+      "extensions": ["c", "h"],
+      "run_language": "c",
+      "highlight": "c",
+      "auto": true,
+      "markers": [
+        ["#include\\s*<(stdio|stdlib|string|math|ctype|time)\\.h>", 5.0, "C standard include"],
+        ["\\bprintf\\s*\\(", 2.5, "printf"],
+        ["\\bint\\s+main\\s*\\(", 4.0, "int main"],
+        ["\\bmalloc\\s*\\(", 2.0, "malloc"],
+        ["\\bstruct\\s+\\w+\\s*\\{", 2.0, "struct"],
+        ["\\btypedef\\s+(struct|enum|union)\\b", 2.5, "typedef"],
+        ["%\\d*[dsfux]", 1.2, "format specifier"]
+      ],
+      "samples": [
+        "#include <stdio.h>\n#include <stdlib.h>\n\nint main(int argc, char **argv) {\n    int total = 0;\n    for (int i = 1; i < argc; i++) {\n        total += atoi(argv[i]);\n    }\n    printf(\"total = %d\\n\", total);\n    return 0;\n}\n",
+        "#include <string.h>\n#include <stdlib.h>\n\ntypedef struct Node {\n    char *name;\n    struct Node *next;\n} Node;\n\nNode *node_new(const char *name) {\n    Node *node = malloc(sizeof(Node));\n    node->name = strdup(name);\n    node->next = NULL;\n    return node;\n}\n"
+      ]
+    },
+    {
+      "id": "cpp",
+      "display": "C++",
+      "extensions": ["cpp", "cc", "cxx", "c++", "hpp", "hh", "hxx"],
+      "run_language": "cpp",
+      "highlight": "cpp",
+      "auto": true,
+      "markers": [
+        ["#include\\s*<(iostream|vector|string|map|memory|algorithm)>", 6.0, "C++ standard include"],
+        ["\\bstd::", 3.5, "std::"],
+        ["\\bcout\\s*<<|\\bcin\\s*>>", 3.0, "cout/cin"],
+        ["\\bclass\\s+\\w+\\s*[:{]\\s*", 1.8, "class"],
+        ["\\btemplate\\s*<", 3.0, "template"],
+        ["\\busing\\s+namespace\\s+std\\b", 5.0, "using namespace std"],
+        ["\\b(const\\s+)?auto&?\\s+\\w+", 1.5, "auto"]
+      ],
+      "samples": [
+        "#include <iostream>\n#include <string>\n#include <vector>\n\nint main() {\n    std::vector<std::string> names{\"Ada\", \"Linus\"};\n    for (const auto& name : names) {\n        std::cout << name << '\\n';\n    }\n    return 0;\n}\n",
+        "#include <memory>\n#include <vector>\n\ntemplate <typename T>\nclass Store {\npublic:\n    void add(T value) { items_.push_back(std::move(value)); }\n    const std::vector<T>& items() const { return items_; }\nprivate:\n    std::vector<T> items_;\n};\n"
+      ]
+    },
+    {
+      "id": "csharp",
+      "display": "C#",
+      "extensions": ["cs", "csx"],
+      "run_language": "csharp",
+      "highlight": "cs",
+      "auto": true,
+      "markers": [
+        ["^\\s*using\\s+System(\\.\\w+)*;", 6.0, "using System"],
+        ["\\bConsole\\.(Write|WriteLine|ReadLine)\\s*\\(", 4.0, "Console.WriteLine"],
+        ["\\bnamespace\\s+[\\w.]+", 2.5, "namespace"],
+        ["\\b(public|private|internal)\\s+(static\\s+)?(class|void|string|int)\\b", 1.8, "C# member"],
+        ["\\bvar\\s+\\w+\\s*=", 1.2, "var"],
+        ["\\basync\\s+Task\\b", 2.5, "async Task"],
+        ["\\bLINQ\\b|\\.Select\\s*\\(", 1.5, "LINQ"]
+      ],
+      "samples": [
+        "using System;\nusing System.Collections.Generic;\n\nnamespace Demo\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            var names = new List<string> { \"Ada\", \"Linus\" };\n            names.ForEach(name => Console.WriteLine(name));\n        }\n    }\n}\n",
+        "using System.Threading.Tasks;\n\npublic sealed class Client\n{\n    public async Task<string> FetchAsync(string url)\n    {\n        await Task.Delay(10);\n        return url;\n    }\n}\n"
+      ]
+    },
+    {
+      "id": "go",
+      "display": "Go",
+      "extensions": ["go"],
+      "run_language": "go",
+      "highlight": "go",
+      "auto": true,
+      "markers": [
+        ["^\\s*package\\s+\\w+", 6.0, "package clause"],
+        ["\\bfunc\\s+(\\w+\\s*)?\\(", 3.0, "func"],
+        [":=", 2.5, "short declaration"],
+        ["\\bfmt\\.(Print|Printf|Println|Errorf)\\s*\\(", 4.0, "fmt package"],
+        ["\\btype\\s+\\w+\\s+struct\\s*\\{", 3.5, "struct type"],
+        ["^\\s*import\\s*\\($", 3.0, "import block"],
+        ["\\bgo\\s+func\\s*\\(", 2.5, "goroutine"]
+      ],
+      "samples": [
+        "package main\n\nimport (\n\t\"fmt\"\n\t\"os\"\n)\n\nfunc main() {\n\tif len(os.Args) < 2 {\n\t\tfmt.Println(\"usage: greet <name>\")\n\t\treturn\n\t}\n\tfmt.Printf(\"hello %s\\n\", os.Args[1])\n}\n",
+        "package store\n\ntype User struct {\n\tID   int\n\tName string\n}\n\nfunc (u *User) Label() string {\n\treturn fmt.Sprintf(\"%d: %s\", u.ID, u.Name)\n}\n"
+      ]
+    },
+    {
+      "id": "rust",
+      "display": "Rust",
+      "extensions": ["rs"],
+      "run_language": "rust",
+      "highlight": "txt",
+      "auto": true,
+      "markers": [
+        ["\\bfn\\s+\\w+\\s*\\(", 3.5, "fn"],
+        ["\\blet\\s+mut\\b", 3.0, "let mut"],
+        ["\\bprintln!\\s*\\(", 4.0, "println!"],
+        ["\\buse\\s+(std|crate|super)::", 3.0, "use crate"],
+        ["\\bimpl\\s+\\w+", 2.5, "impl"],
+        ["\\bmatch\\s+\\w+\\s*\\{", 2.0, "match"],
+        ["\\b(Result|Option)<", 2.0, "Result/Option"],
+        ["&str\\b", 2.5, "&str"]
+      ],
+      "samples": [
+        "use std::env;\n\nfn main() {\n    let mut total = 0;\n    for arg in env::args().skip(1) {\n        match arg.parse::<i32>() {\n            Ok(value) => total += value,\n            Err(_) => eprintln!(\"not a number: {}\", arg),\n        }\n    }\n    println!(\"total = {}\", total);\n}\n",
+        "pub struct Store {\n    items: Vec<String>,\n}\n\nimpl Store {\n    pub fn add(&mut self, item: String) {\n        self.items.push(item);\n    }\n\n    pub fn all(&self) -> &[String] {\n        &self.items\n    }\n}\n"
+      ]
+    },
+    {
+      "id": "ruby",
+      "display": "Ruby",
+      "extensions": ["rb", "rake", "gemspec"],
+      "run_language": "ruby",
+      "highlight": "txt",
+      "auto": true,
+      "markers": [
+        ["^\\s*def\\s+\\w+[?!]?(\\([^)]*\\))?\\s*$", 2.5, "def"],
+        ["^\\s*end\\s*$", 2.0, "end"],
+        ["\\bputs\\s+[\"']", 3.0, "puts"],
+        ["\\brequire\\s+['\"]", 2.5, "require"],
+        ["\\bdo\\s*\\|", 2.5, "block arguments"],
+        ["\\battr_(accessor|reader|writer)\\b", 4.0, "attr_accessor"],
+        ["\\bnil\\b", 1.2, "nil"],
+        ["#\\{[^}]+\\}", 1.5, "string interpolation"]
+      ],
+      "samples": [
+        "require \"json\"\n\nclass Greeter\n  def initialize(name)\n    @name = name\n  end\n\n  def greet\n    puts \"Hello, #{@name}!\"\n  end\nend\n\nGreeter.new(ARGV.first || \"world\").greet\n",
+        "items = [\"Ada\", \"Linus\"]\nitems.each do |name|\n  puts name.upcase\nend\n\nresult = items.select { |name| name.length > 3 }\nputs result.inspect\n"
+      ]
+    },
+    {
+      "id": "php",
+      "display": "PHP",
+      "extensions": ["php", "phtml"],
+      "run_language": "php",
+      "highlight": "txt",
+      "auto": true,
+      "markers": [
+        ["<\\?php", 10.0, "PHP opening tag"],
+        ["\\$\\w+\\s*=", 2.0, "PHP variable"],
+        ["\\bfunction\\s+\\w+\\s*\\(", 2.0, "function"],
+        ["\\becho\\s+", 2.0, "echo"],
+        ["\\bnamespace\\s+[A-Z]\\w*", 2.5, "namespace"],
+        ["\\buse\\s+[A-Z]\\w*\\\\", 2.0, "use class"],
+        ["->\\w+\\s*\\(", 1.5, "method call"]
+      ],
+      "samples": [
+        "<?php\n\ndeclare(strict_types=1);\n\nfunction greet(string $name): string\n{\n    return \"Hello, {$name}!\";\n}\n\n$names = [\"Ada\", \"Linus\"];\nforeach ($names as $name) {\n    echo greet($name), PHP_EOL;\n}\n",
+        "<?php\n\nnamespace App\\Http;\n\nfinal class Controller\n{\n    public function show(int $id): array\n    {\n        return ['id' => $id, 'active' => true];\n    }\n}\n"
+      ]
+    },
+    {
+      "id": "lua",
+      "display": "Lua",
+      "extensions": ["lua"],
+      "run_language": "lua",
+      "highlight": "lua",
+      "auto": true,
+      "markers": [
+        ["^\\s*local\\s+\\w+", 2.5, "local"],
+        ["^\\s*function\\s+[\\w.:]+\\s*\\(", 2.5, "function"],
+        ["\\bthen\\b", 1.5, "then"],
+        ["^\\s*end\\s*$", 1.8, "end"],
+        ["\\bnil\\b", 1.2, "nil"],
+        ["\\bipairs\\s*\\(|\\bpairs\\s*\\(", 3.0, "pairs/ipairs"],
+        ["\\.\\.", 0.8, "concatenation"],
+        ["\\brequire\\s*\\(", 1.5, "require"]
+      ],
+      "samples": [
+        "local function greet(name)\n    return \"Hello, \" .. name .. \"!\"\nend\n\nlocal names = { \"Ada\", \"Linus\" }\nfor _, name in ipairs(names) do\n    print(greet(name))\nend\n",
+        "local Store = {}\nStore.__index = Store\n\nfunction Store.new()\n    return setmetatable({ items = {} }, Store)\nend\n\nfunction Store:add(item)\n    table.insert(self.items, item)\nend\n"
+      ]
+    },
+    {
+      "id": "shell",
+      "display": "Shell",
+      "extensions": ["sh", "bash", "zsh", "ksh"],
+      "run_language": "shell",
+      "highlight": "txt",
+      "auto": true,
+      "markers": [
+        ["^#!.*\\b(bash|sh|zsh)\\b", 10.0, "shell shebang"],
+        ["^\\s*(if|for|while)\\s+.*;\\s*then\\b", 3.5, "shell control flow"],
+        ["^\\s*fi\\s*$|\\bfi\\b", 1.8, "fi"],
+        ["^\\s*done\\s*$", 1.8, "done"],
+        ["\\$\\{?\\w+\\}?", 1.2, "variable expansion"],
+        ["^\\s*[A-Z_][A-Z0-9_]*=", 1.5, "environment variable"],
+        ["\\bset\\s+-[eux]+o?\\b", 2.5, "set -e"]
+      ],
+      "samples": [
+        "#!/usr/bin/env bash\nset -euo pipefail\n\ntarget=\"${1:-world}\"\nfor name in \"$target\" \"qorix\"; do\n  echo \"Hello, ${name}!\"\ndone\n",
+        "#!/bin/sh\n\nif [ ! -d \"$HOME/.config\" ]; then\n  mkdir -p \"$HOME/.config\"\nfi\n\nfind . -name '*.tmp' -delete\nprintf 'done\\n'\n"
+      ]
+    },
+    {
+      "id": "powershell",
+      "display": "PowerShell",
+      "extensions": ["ps1", "psm1", "psd1"],
+      "run_language": "powershell",
+      "highlight": "txt",
+      "auto": true,
+      "markers": [
+        ["^\\s*(Get|Set|New|Remove|Write|Start|Stop)-[A-Z]\\w+", 4.0, "PowerShell cmdlet"],
+        ["\\bWrite-Host\\b", 4.0, "Write-Host"],
+        ["^\\s*param\\s*\\(", 4.0, "param block"],
+        ["\\bforeach\\s*\\(", 1.8, "foreach"],
+        ["\\$\\w+\\s*=", 1.5, "PowerShell variable"],
+        ["\\[Parameter\\(", 3.0, "Parameter attribute"],
+        ["\\bGet-ChildItem\\b", 4.0, "Get-ChildItem"]
+      ],
+      "samples": [
+        "param([string]$Name = \"world\")\n\n$names = @(\"Ada\", \"Linus\")\nforeach ($item in $names) {\n    Write-Host \"Hello, $item!\"\n}\nGet-ChildItem -Path . -Filter *.ps1\n",
+        "function Get-Total {\n    param([int[]]$Values)\n    $sum = 0\n    foreach ($value in $Values) { $sum += $value }\n    return $sum\n}\n"
+      ]
+    },
+    {
+      "id": "batch",
+      "display": "Windows batch",
+      "extensions": ["bat", "cmd"],
+      "run_language": "batch",
+      "highlight": "txt",
+      "auto": true,
+      "markers": [
+        ["^@echo\\s+off", 10.0, "@echo off"],
+        ["^\\s*set\\s+\\w+=", 2.5, "set variable"],
+        ["\\bif\\s+/i?\\s*exist\\b", 3.0, "if exist"],
+        ["%\\w+%", 1.5, "environment expansion"],
+        ["\\bgoto\\s+\\w+", 3.0, "goto"],
+        ["\\bcall\\s+", 2.0, "call"],
+        ["\\bexit\\s*/b\\b", 3.0, "exit /b"],
+        ["^:\\w+\\s*$", 2.0, "batch label"]
+      ],
+      "samples": [
+        "@echo off\nsetlocal\nset NAME=%1\nif \"%NAME%\"==\"\" set NAME=world\necho Hello, %NAME%!\nfor %%f in (*.txt) do echo Found %%f\nexit /b 0\n",
+        "@echo off\nif not exist build mkdir build\ncall :build debug\nif errorlevel 1 goto fail\necho Done\ngoto :eof\n\n:build\necho Building %1\nexit /b 0\n\n:fail\nexit /b 1\n"
+      ]
+    },
+    {
+      "id": "html",
+      "display": "HTML",
+      "extensions": ["html", "htm", "xhtml"],
+      "run_language": "html",
+      "highlight": "html",
+      "auto": true,
+      "markers": [
+        ["<!DOCTYPE\\s+html", 9.0, "doctype"],
+        ["<html\\b", 6.0, "html tag"],
+        ["</(div|body|head|main|section|p|span)>", 2.0, "closing tag"],
+        ["<(div|main|section|head|body|script|link)\\b", 2.0, "structural tag"],
+        ["\\bclass=[\"']", 1.5, "class attribute"],
+        ["\\bhref=[\"']", 1.5, "href attribute"]
+      ],
+      "samples": [
+        "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Demo</title>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n  <main class=\"app\">\n    <h1>Hello</h1>\n    <script src=\"app.js\"></script>\n  </main>\n</body>\n</html>\n",
+        "<section class=\"card\" id=\"user\">\n  <h2>Profile</h2>\n  <p>Signed in as <strong>Ada</strong>.</p>\n  <a href=\"/settings\">Settings</a>\n</section>\n"
+      ]
+    },
+    {
+      "id": "css",
+      "display": "CSS",
+      "extensions": ["css", "scss", "less"],
+      "run_language": "css",
+      "highlight": "css",
+      "auto": true,
+      "markers": [
+        ["^[.#]?[\\w-]+[\\s,.:>\\w-]*\\{", 2.5, "selector block"],
+        ["\\b(color|background|display|margin|padding|font-size|border)\\s*:", 2.0, "CSS property"],
+        ["@media\\b", 4.0, "@media"],
+        ["\\bvar\\(--[\\w-]+\\)", 2.5, "CSS variable"],
+        ["^\\s*--[\\w-]+\\s*:", 2.0, "custom property"],
+        ["\\d+(px|rem|em|vh|vw|%);", 1.2, "length unit"]
+      ],
+      "samples": [
+        ":root {\n  --accent: #85c6ff;\n  --background: #101014;\n}\n\n.app {\n  display: flex;\n  gap: 1rem;\n  color: var(--accent);\n  background: var(--background);\n}\n\n@media (max-width: 700px) {\n  .app { flex-direction: column; }\n}\n",
+        ".button:hover {\n  background-color: #1f6feb;\n  border-radius: 4px;\n  padding: 6px 12px;\n  transition: background 120ms ease;\n}\n"
+      ]
+    },
+    {
+      "id": "json",
+      "display": "JSON",
+      "extensions": ["json", "jsonc", "geojson"],
+      "run_language": "json",
+      "highlight": "json",
+      "auto": true,
+      "markers": [
+        ["^\\s*[\\{\\[]\\s*$", 2.0, "object/array start"],
+        ["^\\s*\"[^\"\\n]+\"\\s*:", 3.0, "quoted key"],
+        ["\\b(true|false|null)\\b", 1.5, "JSON literal"],
+        ["^\\s*\"[^\"]*\"\\s*,?\\s*$", 1.5, "string value"],
+        ["\\[\\s*\\{", 1.5, "array of objects"]
+      ],
+      "samples": [
+        "{\n  \"name\": \"qorix\",\n  \"version\": \"2.0.0\",\n  \"enabled\": true,\n  \"files\": [\"main.gd\", \"editor.tscn\"],\n  \"settings\": {\n    \"font_size\": 14,\n    \"theme\": null\n  }\n}\n",
+        "[\n  {\"id\": 1, \"name\": \"Ada\", \"active\": true},\n  {\"id\": 2, \"name\": \"Linus\", \"active\": false}\n]\n"
+      ]
+    },
+    {
+      "id": "yaml",
+      "display": "YAML",
+      "extensions": ["yaml", "yml"],
+      "run_language": "yaml",
+      "highlight": "txt",
+      "auto": true,
+      "markers": [
+        ["^---\\s*$", 4.0, "document separator"],
+        ["^[a-zA-Z_][\\w-]*\\s*:\\s*$", 2.0, "mapping key"],
+        ["^\\s{2,}[\\w-]+\\s*:", 2.0, "nested mapping"],
+        ["^\\s*-\\s+[\\w\"']", 2.0, "sequence item"],
+        ["\\$\\{\\{[^}]+\\}\\}", 3.0, "template expression"]
+      ],
+      "samples": [
+        "name: qorix\nversion: 2.0.0\nservices:\n  editor:\n    image: ghcr.io/nadeem-vibes/qorix\n    ports:\n      - \"8080:8080\"\n    environment:\n      DEBUG: \"false\"\n",
+        "---\nname: Build\non:\n  push:\n    branches: [main]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n"
+      ]
+    },
+    {
+      "id": "xml",
+      "display": "XML",
+      "extensions": ["xml", "xsd", "svg", "plist", "csproj"],
+      "run_language": "xml",
+      "highlight": "txt",
+      "auto": true,
+      "markers": [
+        ["<\\?xml\\s+version=", 10.0, "XML declaration"],
+        ["\\bxmlns(:\\w+)?=[\"']", 4.0, "xmlns"],
+        ["</[A-Za-z][\\w:.-]*>", 1.8, "closing tag"],
+        ["<[A-Za-z][\\w:.-]*(\\s+[\\w:.-]+=[\"'][^\"']*[\"'])+/?>", 2.0, "tag with attributes"]
+      ],
+      "samples": [
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://example.com/schema\">\n  <name>qorix</name>\n  <targets>\n    <target name=\"editor\" enabled=\"true\" />\n  </targets>\n</project>\n",
+        "<configuration>\n  <appSettings>\n    <add key=\"Theme\" value=\"Tokyo Night\" />\n    <add key=\"FontSize\" value=\"14\" />\n  </appSettings>\n</configuration>\n"
+      ]
+    },
+    {
+      "id": "markdown",
+      "display": "Markdown",
+      "extensions": ["md", "markdown", "mdown"],
+      "run_language": "markdown",
+      "highlight": "txt",
+      "auto": false,
+      "markers": [
+        ["^#{1,6}\\s+\\S", 4.0, "heading"],
+        ["^\\s*[-*+]\\s+\\S", 2.0, "list item"],
+        ["\\[[^\\]]+\\]\\([^)]+\\)", 3.0, "link"],
+        ["```[a-zA-Z0-9_+-]*", 3.0, "fenced code"],
+        ["^>\\s+\\S", 1.5, "block quote"]
+      ],
+      "samples": [
+        "# Qorix\n\nA code editor built with Godot.\n\n## Features\n\n- Tabs with per-file undo\n- Run panel with friendly errors\n- **Offline** language detection\n\nSee [the docs](https://example.com/docs) for details.\n"
+      ]
+    },
+    {
+      "id": "sql",
+      "display": "SQL",
+      "extensions": ["sql", "ddl", "dml"],
+      "run_language": "sql",
+      "highlight": "txt",
+      "auto": true,
+      "markers": [
+        ["(?i)\\bSELECT\\b.+\\bFROM\\b", 5.0, "SELECT ... FROM"],
+        ["(?i)\\bINSERT\\s+INTO\\b", 4.0, "INSERT INTO"],
+        ["(?i)\\bCREATE\\s+(TABLE|DATABASE|INDEX)\\b", 5.0, "CREATE TABLE"],
+        ["(?i)\\bWHERE\\b", 2.0, "WHERE"],
+        ["(?i)\\b(INNER|LEFT|RIGHT)?\\s*JOIN\\b", 2.5, "JOIN"],
+        ["(?i)\\bPRIMARY\\s+KEY\\b", 3.0, "PRIMARY KEY"],
+        ["(?i)\\bGROUP\\s+BY\\b", 2.5, "GROUP BY"]
+      ],
+      "samples": [
+        "SELECT users.id, users.name, COUNT(orders.id) AS order_count\nFROM users\nLEFT JOIN orders ON orders.user_id = users.id\nWHERE users.active = 1\nGROUP BY users.id, users.name\nORDER BY order_count DESC\nLIMIT 20;\n",
+        "CREATE TABLE users (\n  id INTEGER PRIMARY KEY,\n  name TEXT NOT NULL,\n  email TEXT UNIQUE\n);\n\nINSERT INTO users (name, email) VALUES ('Ada', 'ada@example.com');\n"
+      ]
+    },
+    {
+      "id": "kotlin",
+      "display": "Kotlin",
+      "extensions": ["kt", "kts"],
+      "run_language": "kotlin",
+      "highlight": "txt",
+      "auto": true,
+      "markers": [
+        ["^\\s*fun\\s+\\w+\\s*\\(", 3.5, "fun"],
+        ["^\\s*(val|var)\\s+\\w+", 2.5, "val/var"],
+        ["\\bdata\\s+class\\b", 4.0, "data class"],
+        ["\\bfun\\s+main\\s*\\(", 3.5, "main"],
+        ["\\bwhen\\s*\\(", 2.0, "when"],
+        ["\\?\\.[\\w(]", 2.0, "safe call"],
+        ["\\bprintln\\s*\\(", 1.5, "println"]
+      ],
+      "samples": [
+        "data class User(val id: Int, val name: String)\n\nfun main() {\n    val users = listOf(User(1, \"Ada\"), User(2, \"Linus\"))\n    users.forEach { user ->\n        println(\"${user.id}: ${user.name}\")\n    }\n}\n",
+        "class Store<T> {\n    private val items = mutableListOf<T>()\n\n    fun add(item: T) {\n        items.add(item)\n    }\n}\n"
+      ]
+    },
+    {
+      "id": "swift",
+      "display": "Swift",
+      "extensions": ["swift"],
+      "run_language": "swift",
+      "highlight": "txt",
+      "auto": true,
+      "markers": [
+        ["\\bfunc\\s+\\w+\\s*\\(", 2.0, "func"],
+        ["\\blet\\s+\\w+\\s*(=|:)", 2.0, "let"],
+        ["^\\s*import\\s+(Foundation|UIKit|SwiftUI)\\b", 6.0, "Apple framework"],
+        ["\\bguard\\s+let\\b", 3.0, "guard let"],
+        ["\\bstruct\\s+\\w+\\s*:", 2.5, "struct conformance"],
+        ["\\bif\\s+let\\b", 2.5, "if let"],
+        ["\\\\\\([^)]+\\)", 1.5, "string interpolation"]
+      ],
+      "samples": [
+        "import Foundation\n\nstruct Greeter {\n    let name: String\n\n    func greet() -> String {\n        return \"Hello, \\(name)!\"\n    }\n}\n\nlet names = [\"Ada\", \"Linus\"]\nfor name in names {\n    print(Greeter(name: name).greet())\n}\n",
+        "import SwiftUI\n\nstruct ContentView: View {\n    var body: some View {\n        VStack {\n            Text(\"Hello\")\n            Text(\"World\")\n        }\n    }\n}\n"
+      ]
+    },
+    {
+      "id": "dart",
+      "display": "Dart",
+      "extensions": ["dart"],
+      "run_language": "dart",
+      "highlight": "txt",
+      "auto": true,
+      "markers": [
+        ["^\\s*import\\s+['\"]package:", 7.0, "package import"],
+        ["\\bvoid\\s+main\\s*\\(", 4.0, "void main"],
+        ["\\bfinal\\s+\\w+", 2.0, "final"],
+        ["\\bWidget\\s+build\\s*\\(", 4.0, "Widget build"],
+        ["\\bclass\\s+\\w+\\s+extends\\s+\\w+", 2.5, "class extends"],
+        ["@override\\b", 2.0, "@override"],
+        ["\\bconst\\s+\\w+\\s*\\(", 2.0, "const constructor"]
+      ],
+      "samples": [
+        "import 'package:flutter/material.dart';\n\nclass Counter extends StatefulWidget {\n  const Counter({super.key});\n\n  @override\n  State<Counter> createState() => _CounterState();\n}\n\nclass _CounterState extends State<Counter> {\n  int count = 0;\n\n  @override\n  Widget build(BuildContext context) {\n    return Text('$count');\n  }\n}\n",
+        "void main() {\n  final values = [1, 2, 3];\n  var total = 0;\n  for (final value in values) {\n    total += value;\n  }\n  print('total = $total');\n}\n"
+      ]
+    },
+    {
+      "id": "r",
+      "display": "R",
+      "extensions": ["r", "rmd"],
+      "run_language": "r",
+      "highlight": "txt",
+      "auto": true,
+      "markers": [
+        ["\\bfunction\\s*\\(", 2.0, "function"],
+        ["\\blibrary\\s*\\(", 4.0, "library()"],
+        ["<-", 3.0, "assignment arrow"],
+        ["\\bdata\\.frame\\s*\\(", 4.0, "data.frame"],
+        ["\\bggplot\\s*\\(", 4.0, "ggplot"],
+        ["\\bNULL\\b", 1.5, "NULL"],
+        ["\\bna\\.rm\\s*=", 2.5, "na.rm"]
+      ],
+      "samples": [
+        "library(ggplot2)\n\nload_data <- function(path) {\n  frame <- read.csv(path)\n  frame[!is.na(frame$value), ]\n}\n\ndata <- load_data(\"measurements.csv\")\nsummary(data$value)\nggplot(data, aes(x = group, y = value)) + geom_boxplot()\n",
+        "values <- c(3, 5, 8, 13)\ntotal <- sum(values, na.rm = TRUE)\nmean_value <- mean(values)\nprint(paste(\"total\", total, \"mean\", mean_value))\n"
+      ]
+    },
+    {
+      "id": "perl",
+      "display": "Perl",
+      "extensions": ["pl", "pm"],
+      "run_language": "perl",
+      "highlight": "txt",
+      "auto": true,
+      "markers": [
+        ["^\\s*use\\s+(strict|warnings|v5)", 5.0, "use strict"],
+        ["\\bmy\\s+[$@%]\\w+", 3.0, "my variable"],
+        ["=~", 2.0, "regex binding"],
+        ["\\bforeach\\s+my\\b", 3.0, "foreach my"],
+        ["^\\s*sub\\s+\\w+\\s*\\{", 3.0, "subroutine"],
+        ["\\$\\w+\\s*=", 1.5, "scalar variable"],
+        ["\\bprint\\s+[\"']", 1.5, "print"]
+      ],
+      "samples": [
+        "use strict;\nuse warnings;\n\nmy @names = (\"Ada\", \"Linus\");\nforeach my $name (@names) {\n    print \"Hello, $name!\\n\";\n}\n\nmy %counts;\n$counts{$_}++ for @names;\n",
+        "use strict;\nuse warnings;\n\nsub load_file {\n    my ($path) = @_;\n    open my $fh, '<', $path or die \"cannot open $path: $!\";\n    return <$fh>;\n}\n"
+      ]
+    },
+    {
+      "id": "scala",
+      "display": "Scala",
+      "extensions": ["scala", "sc"],
+      "run_language": "scala",
+      "highlight": "txt",
+      "auto": true,
+      "markers": [
+        ["^\\s*object\\s+\\w+", 3.5, "object"],
+        ["\\bcase\\s+class\\b", 4.0, "case class"],
+        ["^\\s*def\\s+\\w+\\s*[\\[(:]", 2.5, "def"],
+        ["^\\s*val\\s+\\w+\\s*=", 2.0, "val"],
+        ["^\\s*import\\s+scala\\.", 5.0, "scala import"],
+        ["=>\\s*\\{?", 1.2, "lambda"],
+        ["\\bextends\\s+(App|Actor|Spec)\\b", 3.0, "extends App"]
+      ],
+      "samples": [
+        "object Main extends App {\n  case class User(id: Int, name: String)\n\n  val users = List(User(1, \"Ada\"), User(2, \"Linus\"))\n  users.foreach { user =>\n    println(s\"${user.id}: ${user.name}\")\n  }\n}\n",
+        "import scala.collection.mutable\n\nclass Store {\n  private val items = mutable.ArrayBuffer.empty[String]\n\n  def add(item: String): Unit = items += item\n  def all: Seq[String] = items.toSeq\n}\n"
+      ]
+    },
+    {
+      "id": "haskell",
+      "display": "Haskell",
+      "extensions": ["hs", "lhs"],
+      "run_language": "haskell",
+      "highlight": "txt",
+      "auto": true,
+      "markers": [
+        ["^\\s*module\\s+\\w+.*\\bwhere\\b", 4.0, "module where"],
+        ["^\\s*import\\s+(qualified\\s+)?[A-Z]", 2.5, "import"],
+        ["^\\w+\\s*::\\s*", 3.0, "type signature"],
+        ["\\bderiving\\s*\\(", 3.0, "deriving"],
+        ["\\bdata\\s+\\w+\\s*=", 3.0, "data declaration"],
+        ["->\\s*[A-Za-z\\[\\](]", 1.0, "function arrow"],
+        ["\\bputStrLn\\b", 3.0, "putStrLn"]
+      ],
+      "samples": [
+        "module Main where\n\nimport System.Environment (getArgs)\n\ngreet :: String -> String\ngreet name = \"Hello, \" ++ name ++ \"!\"\n\nmain :: IO ()\nmain = do\n  args <- getArgs\n  mapM_ (putStrLn . greet) args\n",
+        "data Shape = Circle Double | Square Double deriving (Show)\n\narea :: Shape -> Double\narea (Circle radius) = pi * radius * radius\narea (Square side) = side * side\n"
+      ]
+    },
+    {
+      "id": "elixir",
+      "display": "Elixir",
+      "extensions": ["ex", "exs"],
+      "run_language": "elixir",
+      "highlight": "txt",
+      "auto": true,
+      "markers": [
+        ["^\\s*defmodule\\s+[A-Z]\\w*", 7.0, "defmodule"],
+        ["^\\s*defp?\\s+\\w+", 2.5, "def"],
+        ["\\|>", 3.0, "pipeline"],
+        ["\\bIO\\.(puts|inspect)\\s*\\(", 4.0, "IO.puts"],
+        ["^\\s*end\\s*$", 1.2, "end"],
+        ["@\\w+\\s+", 1.5, "module attribute"],
+        ["\\bEnum\\.(map|each|filter)\\b", 4.0, "Enum function"]
+      ],
+      "samples": [
+        "defmodule Greeter do\n  def greet(name) do\n    IO.puts(\"Hello, #{name}!\")\n  end\nend\n\n[\"Ada\", \"Linus\"]\n|> Enum.each(&Greeter.greet/1)\n",
+        "defmodule Store do\n  defstruct items: []\n\n  def add(%__MODULE__{items: items} = store, item) do\n    %{store | items: [item | items]}\n  end\nend\n"
+      ]
+    },
+    {
+      "id": "clojure",
+      "display": "Clojure",
+      "extensions": ["clj", "cljs", "cljc", "edn"],
+      "run_language": "clojure",
+      "highlight": "txt",
+      "auto": true,
+      "markers": [
+        ["^\\(ns\\s+", 5.0, "ns form"],
+        ["\\(defn-?\\s+", 4.0, "defn"],
+        ["\\(let\\s*\\[", 3.0, "let binding"],
+        ["\\(println\\s", 3.0, "println"],
+        ["->>|->", 1.5, "threading macro"],
+        ["\\b:require\\b", 2.5, ":require"],
+        ["(:\\w[\\w-]*)", 1.2, "keyword"]
+      ],
+      "samples": [
+        "(ns demo.core\n  (:require [clojure.string :as str]))\n\n(defn greet [name]\n  (str \"Hello, \" name \"!\"))\n\n(defn -main [& args]\n  (doseq [name (or (seq args) [\"Ada\" \"Linus\"])]\n    (println (greet name))))\n",
+        "(defn active-users [users]\n  (->> users\n       (filter :active?)\n       (map :name)\n       (sort)))\n"
+      ]
+    },
+    {
+      "id": "zig",
+      "display": "Zig",
+      "extensions": ["zig"],
+      "run_language": "zig",
+      "highlight": "txt",
+      "auto": true,
+      "markers": [
+        ["@import\\s*\\(\\s*\"std\"\\s*\\)", 9.0, "@import std"],
+        ["\\bpub\\s+fn\\s+\\w+", 3.5, "pub fn"],
+        ["^\\s*const\\s+\\w+\\s*=", 2.0, "const"],
+        ["\\btry\\s+", 2.0, "try"],
+        ["!void\\b", 3.0, "!void"],
+        ["\\bvar\\s+\\w+\\s*:", 1.8, "var"]
+      ],
+      "samples": [
+        "const std = @import(\"std\");\n\npub fn main() !void {\n    const stdout = std.io.getStdOut().writer();\n    var total: i32 = 0;\n    for ([_]i32{ 1, 2, 3 }) |value| {\n        total += value;\n    }\n    try stdout.print(\"total = {}\\n\", .{total});\n}\n"
+      ]
+    },
+    {
+      "id": "nim",
+      "display": "Nim",
+      "extensions": ["nim", "nims"],
+      "run_language": "nim",
+      "highlight": "txt",
+      "auto": true,
+      "markers": [
+        ["^\\s*import\\s+std/", 7.0, "std import"],
+        ["^\\s*proc\\s+\\w+\\s*\\(", 4.0, "proc"],
+        ["\\becho\\s+\"", 3.0, "echo"],
+        ["^\\s*var\\s+\\w+\\s*:", 2.0, "var declaration"],
+        ["\\btype\\s+\\w+\\s*=\\s*object\\b", 4.0, "object type"],
+        ["\\bresult\\s*=", 1.5, "result"]
+      ],
+      "samples": [
+        "import std/[strutils, os]\n\nproc greet(name: string): string =\n  result = \"Hello, \" & name & \"!\"\n\nfor name in commandLineParams():\n  echo greet(name)\n",
+        "type User = object\n  id: int\n  name: string\n\nproc label(user: User): string =\n  \"$1: $2\" % [$user.id, user.name]\n"
+      ]
+    },
+    {
+      "id": "brainfuck",
+      "display": "Brainfuck",
+      "extensions": ["bf"],
+      "run_language": "brainfuck",
+      "highlight": "bf",
+      "auto": true,
+      "markers": [
+        ["^[+\\-<>,.\\[\\]]{8,}[ \\t]*$", 12.0, "only brainfuck commands"]
+      ],
+      "samples": [
+        "++++++++[>++++++++<-]>+.>++++[>+++++<-]>.-.--------.+++++++++.+++++++.\n"
+      ]
+    },
+    {
+      "id": "text",
+      "display": "Plain text",
+      "extensions": ["txt", "text", "log", "md"],
+      "run_language": "text",
+      "highlight": "txt",
+      "auto": false,
+      "fallback": true,
+      "markers": [],
+      "samples": [
+        "The quick brown fox jumps over the lazy dog. This file contains notes,\nreminders, and a short paragraph of ordinary prose with no programming\nsyntax. It has sentences, commas, and punctuation, but no keywords.\n",
+        "Meeting notes: the release is planned for Friday. Please review the\nchecklist and send comments before Thursday afternoon. Thanks!\n"
+      ]
+    }
+  ]
+}

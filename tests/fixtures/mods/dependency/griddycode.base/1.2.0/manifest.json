@@ -1,0 +1,13 @@
+{
+	"schema": 1,
+	"id": "griddycode.base",
+	"name": "Base Dependency Fixture",
+	"version": "1.2.0",
+	"api": 1,
+	"min_editor": "1.0.0",
+	"entry": "main.lua",
+	"author": "Qorix tests",
+	"description": "A dependency target for the resolver integration test.",
+	"license": "MIT",
+	"permissions": ["core"]
+}

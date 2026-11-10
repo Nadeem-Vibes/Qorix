@@ -1,0 +1,92 @@
+{
+	"version": 1,
+	"language": "css",
+	"display": "CSS",
+	"entries": [
+		{
+			"term": "selector",
+			"plain": "The part before the curly braces that says which elements a rule applies to, such as p or .card.",
+			"example": ".card {\n  padding: 20px;\n}"
+		},
+		{
+			"term": "property",
+			"plain": "The name of a visual feature you want to change, such as color or font-size. The value comes after the colon.",
+			"example": "color: white;"
+		},
+		{
+			"term": "color",
+			"plain": "Sets the colour of text.",
+			"example": "p {\n  color: #eef4ff;\n}"
+		},
+		{
+			"term": "background",
+			"aliases": ["background-color", "background-color property"],
+			"plain": "Paints behind an element. background-color is the simple solid-colour version.",
+			"example": "body {\n  background-color: #10151c;\n}"
+		},
+		{
+			"term": "display",
+			"plain": "Controls how an element is laid out, for example block, inline, flex or none to hide it.",
+			"example": ".card {\n  display: flex;\n}"
+		},
+		{
+			"term": "flex",
+			"aliases": ["flexbox", "display: flex"],
+			"plain": "A layout mode that lines children up in a row or column and lets them share space.",
+			"example": "header {\n  display: flex;\n  gap: 8px;\n}"
+		},
+		{
+			"term": "margin",
+			"plain": "Space outside an element, pushing other elements away from it.",
+			"example": "h1 {\n  margin: 0 0 12px;\n}"
+		},
+		{
+			"term": "padding",
+			"plain": "Space inside an element, between its edge and its content.",
+			"example": ".card {\n  padding: 38px;\n}"
+		},
+		{
+			"term": "border",
+			"plain": "A line around an element. You can set its width, style and colour together.",
+			"example": ".card {\n  border: 1px solid #71d7ff;\n}"
+		},
+		{
+			"term": "border-radius",
+			"plain": "Rounds the corners of an element.",
+			"example": ".card {\n  border-radius: 20px;\n}"
+		},
+		{
+			"term": "font-size",
+			"plain": "How large the text is. Values can use px, rem, em, or clamp() to adapt to the screen.",
+			"example": "h1 {\n  font-size: 48px;\n}"
+		},
+		{
+			"term": "font-family",
+			"plain": "The typeface used for text. List a few names so the browser can fall back.",
+			"example": "body {\n  font-family: system-ui, sans-serif;\n}"
+		},
+		{
+			"term": "class",
+			"aliases": [".class", "class selector"],
+			"plain": "In CSS a class selector begins with a dot and styles every element that uses that class.",
+			"example": ".message {\n  color: #a6e8ff;\n}"
+		},
+		{
+			"term": "id",
+			"aliases": ["#id", "id selector"],
+			"plain": "In CSS an id selector begins with # and targets the one element with that id.",
+			"example": "#cheer {\n  background: #71d7ff;\n}"
+		},
+		{
+			"term": "hover",
+			"aliases": [":hover"],
+			"plain": "A state that applies while the pointer is over an element.",
+			"example": "button:hover {\n  background: #a6e8ff;\n}"
+		},
+		{
+			"term": "gap",
+			"plain": "The space between children in a flex or grid layout.",
+			"example": ".row {\n  display: flex;\n  gap: 8px;\n}"
+		}
+	]
+}

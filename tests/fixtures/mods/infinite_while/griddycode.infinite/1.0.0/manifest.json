@@ -1,0 +1,13 @@
+{
+	"schema": 1,
+	"id": "griddycode.infinite",
+	"name": "Infinite Loop Fixture",
+	"version": "1.0.0",
+	"api": 1,
+	"min_editor": "1.0.0",
+	"entry": "main.lua",
+	"author": "Qorix tests",
+	"description": "Loops forever during activation to exercise the instruction budget.",
+	"license": "MIT",
+	"permissions": ["core"]
+}

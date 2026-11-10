@@ -1,0 +1,91 @@
+name: Windows release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+env:
+  GODOT_VERSION: "4.7.2"
+  APP_VERSION: "0.1.0"
+
+jobs:
+  # A release must not be buildable from a red tree. This mirrors ci.yml and
+  # gates the installer job below on the same headless suite.
+  test:
+    name: Headless tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Godot
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: ${{ env.GODOT_VERSION }}
+          use-dotnet: false
+          include-templates: false
+
+      - name: Import project
+        run: godot --headless --path . --import || true
+
+      - name: Run tests
+        shell: bash
+        run: godot --headless --path . --script res://tests/test_runner.gd
+
+  windows:
+    name: Windows installer
+    runs-on: windows-latest
+    needs: test
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Godot
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: ${{ env.GODOT_VERSION }}
+          use-dotnet: false
+          include-templates: true
+
+      - name: Import project
+        shell: pwsh
+        run: godot --headless --path . --import
+
+      - name: Export Windows build
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path build/windows | Out-Null
+          godot --headless --path . --export-release "Windows Desktop" "build/windows/Qorix.exe"
+
+      - name: Build installer
+        uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
+        with:
+          path: tools/installer/qorix.iss
+          options: /DAppVersion=${{ env.APP_VERSION }}
+
+      - name: Create portable archive
+        shell: pwsh
+        run: Compress-Archive -Path "build/windows/*" -DestinationPath "dist/Qorix-Portable-${{ env.APP_VERSION }}.zip"
+
+      - name: Upload release artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: qorix-windows-${{ env.APP_VERSION }}
+          path: |
+            dist/*.exe
+            dist/*.zip
+          if-no-files-found: error
+
+      - name: Publish GitHub release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            dist/*.exe
+            dist/*.zip

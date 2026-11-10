@@ -1,0 +1,13 @@
+{
+	"schema": 1,
+	"id": "griddycode.storm",
+	"name": "Event Storm Fixture",
+	"version": "1.0.0",
+	"api": 1,
+	"min_editor": "1.0.0",
+	"entry": "main.lua",
+	"author": "Qorix tests",
+	"description": "Emits more events than the per-mod queue can hold.",
+	"license": "MIT",
+	"permissions": ["core"]
+}

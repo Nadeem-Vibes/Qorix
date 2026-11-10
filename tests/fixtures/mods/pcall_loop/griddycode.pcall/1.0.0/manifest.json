@@ -1,0 +1,13 @@
+{
+	"schema": 1,
+	"id": "griddycode.pcall",
+	"name": "pcall Loop Fixture",
+	"version": "1.0.0",
+	"api": 1,
+	"min_editor": "1.0.0",
+	"entry": "main.lua",
+	"author": "Qorix tests",
+	"description": "Tries to swallow its own budget error inside pcall.",
+	"license": "MIT",
+	"permissions": ["core"]
+}

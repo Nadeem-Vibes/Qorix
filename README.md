@@ -1,112 +1,257 @@
-# GriddyCode
-Coding has never been more lit!
+# Qorix
 
+Qorix is a powerful, beginner-friendly code editor designed to grow with
+developers, from their first lines of code to professional software
+development.
 
-https://github.com/face-hh/griddycode/assets/69168154/df93830e-6e24-472d-a854-cea026b12890
+It is a desktop application built with Godot 4.7 and GDScript. It combines a
+world-space code canvas with a familiar editor shell: tabs, a file tree, quick
+open, command palette, search and replace, an integrated terminal, run output,
+source control and debugging.
 
-P.S. Press `CTRL` + `I` for a quick introduction in the Editor :)
+Repositories:
 
+- **Qorix** (this repository): https://github.com/Nadeem-vibes/Qorix
+- **Original upstream project**: https://github.com/face-hh/griddycode
 
-# Table of Contents
-   - [Requirements](#requirements)
-   - [Lua modding](#%EF%B8%8F-lua-modding)
-	  - [Where?](#where)
-	  - [How?](#how)
-	  - [Docs](#docs)
-		 - [Langs](#langs)
-			- [Introduction](#introduction)
-			- [Methods](#methods)
-		 - [Themes](#themes)
-			- [Introduction](#introduction-1)
-			- [Methods](#methods-1)
-	  - [Publishing](#publishing)
-   - [Contributions](#contributions)
-	  - [Current bugs/needed features](#-current-bugsneeded-features)
-	  	- [HIGH PRIORITY](#high-priority)
-		- [MEDIUM PRIORITY](#medium-priority)
-		- [LOW PRIORITY](#low-priority)
+> Qorix is an extensively modified and independently developed fork of
+> [GriddyCode](https://github.com/face-hh/griddycode), the open-source code
+> editor originally created by Face and licensed under the
+> [Apache License 2.0](LICENSE). The upstream project is unmaintained; Qorix
+> keeps the project's heritage and its license. See
+> [License and attribution](#license-and-attribution).
 
-# Requirements
-| Requirement | Notes |
-| -------- | -------- |
-| [Nerdfont](https://www.nerdfonts.com/) - we use Nerdfont for the file picker. | You'll know it's missing when your icons look like "□" |
-| [Linux](https://en.wikipedia.org/wiki/List_of_Linux_distributions) - GriddyCode is tested **mainly** on Linux | No, macOS won't be supported. Gaming OS works. |
+New installations start in **Beginner Mode**: larger text, plain-language
+menus and settings, automatic local file history and a guided two-minute
+tutorial on the welcome screen. Turn it off at any time from Preferences →
+Getting Started, the welcome screen checkbox, or the command palette. The
+welcome screen also offers the built-in **Python Journey** — five guided
+lessons from your first `print()` to your first loop. See the
+[Getting started guide](docs/user/getting-started.md).
 
-# ⌨️ Lua modding
-GriddyCode allows you to extend its functionality via **Lua**.
+Press `Ctrl` + `I` in the editor for the built-in introduction.
 
-## Where?
-To open the folder with Lua scripts, go to:
+## Status
 
-- Windows: `%APPDATA%\Godot\app_userdata\Bussin GriddyCode`
-- macOS: `~/Library/Application Support/Bussin GriddyCode`
-- Linux: `~/.local/share/godot/app_userdata/Bussin GriddyCode`
+The current tree includes the editor refactor, run pipeline, language-server
+support, Git integration, the Python debugger, accessibility/localization
+settings, beginner guidance and the opt-in Lua mod platform Developer Preview.
+The mod API is frozen at 1.0 for the preview, but the public 1.0 release gate
+still has desktop and external-review work outstanding.
 
-*Note: the paths are not accurate, we recommend you manually search for GriddyCode in the AppData of your OS.*
+See the [codebase overview](docs/developer/codebase-overview.md) for the
+architecture and the [manual test checklist](docs/developer/manual-test-checklist.md)
+for the desktop verification pass.
 
-## How?
-You may see the folders **"langs"** and **"themes"**.
-- **"langs"** holds a bunch of `.lua` files that power GriddyCode's syntax highlighting & autocomplete.
-- **"themes"** holds a bunch of `.lua` files that change GriddyCode's appearance.
+## Supported platforms
 
-*Note: the Lua scripts are reloaded only if you switch from a different file extension (i.e. "README.md" -> "main.ts"), or if GriddyCode is restarted.*
+| Platform | Status | Notes |
+| --- | --- | --- |
+| Windows 10/11, x86_64 | Supported | Reference platform; installer and portable ZIP are published by the release workflow. |
+| Linux, x86_64 | Preview | Exported and usable, but the desktop support matrix is not signed off. |
+| macOS | Preview | No signed build or completed desktop accessibility pass yet. |
+| Android, iOS, Web | Unsupported | Qorix is a desktop application. |
 
-## Docs?
-### Langs
-#### Introduction
-To extend the functionality of GriddyCode for a specific **file extension**, create a file with its name. (i.e. `toml.lua`)
+Qorix uses Godot **4.7.2** in CI and release builds. The project uses the
+GL Compatibility renderer and bundles the Nerd Font and emoji fallbacks needed
+by its file picker, settings and editor UI; installing a Nerd Font separately
+is not required.
 
-#### Methods
+## Features
 
-| Method | Example | Description | Notes |
-| -------- | -------- | -------- | -------- |
-| `highlight(keyword: String, color: String)` | `highlight("const", "reserved")` | Tells GriddyCode to highlight a certain keyword with a preset of colors. | Available colors: `reserved`, `annotation`, `string`, `binary`, `symbol`, `variable`, `operator`, `comments`, `error`, `function`, `member` |
-| `highlight_region(start: String, end: String, color: String, line_only: bool = false)` | `highlight("/*", "*/", "comments", false)` | Tells GriddyCode to highlight a region with a preset of colors. | The `start` must be a symbol. Due to Godot's limited functionality, you can't use RegEx. |
-| `add_comment(comment: String)` | `add_comment("What is blud doing 🗣️🗣️🗣️")` | Adds a comment to be randomly chosen in the `CTRL` + `L` menu. | The username, profile picture, date, and likes are chosen by GriddyCode. |
-| `detect_functions(content: String, line: int, column: int) -> Array[String]` | `detect_functions("const test = 3; function main() {}; async init() => { main() }")` | Called by GriddyCode upon input. Results are showed in the autocomplete feature. | This must be provided by the Lua script. It must return an array of strings (i.e. ["main", "init"]). "line" and "column" are the position of the cursor when the autocomplete was requested. |
-| `detect_variables(content: String, line: int, column: int) -> Array[String]` | `detect_variables("const test = 3;")` | Called by GriddyCode upon input. Results are showed in the autocomplete feature. | This must be provided by the Lua script. It must return an array of strings (i.e. ["test"]). "line" and "column" are the position of the cursor when the autocomplete was requested. |
+- Multi-tab editing with undo history, selections, zoom, minimap and dynamic
+  document height.
+- Workspace folders, file tree operations, recent folders, session restore,
+  autosave and external-change detection.
+- Quick open (`Ctrl` + `P`), command palette (`Ctrl` + `Shift` + `P`), find and
+  replace, global search, ignore rules and background indexing.
+- Built-in terminal tabs plus captured or interactive run configurations.
+  Captured runs provide streaming output, exit status, duration, friendly error
+  explanations and clickable `file:line` links.
+- Language Server Protocol support for Python, JavaScript/TypeScript, Rust,
+  C/C++ and Go. Servers are discovered on `PATH`; Qorix does not download
+  or install them.
+- Git source control with status, staging, diffs, commits, branches, pull,
+  push, save points and changed-line markers. Git credentials remain managed
+  by Git's own credential helper.
+- Debug Adapter Protocol support for Python through `debugpy`, including
+  breakpoints, stepping, call stacks, variables, watches and a debug console.
+- A complete built-in Python Journey: five guided lessons on the welcome
+  screen, with ghost-text typing, run-backed checks of your program (text
+  checks when Python is missing) and saved progress. `Ctrl` + `Alt` + `J`,
+  or Help → Python Journey.
+- Beginner Mode for first-time programmers: reversible larger text, plain-language
+  menus and settings, automatic local History (previous versions), a four-step
+  resumable tutorial, starter templates, hover glossary explanations and
+  consequence-first confirmations. On by default for new installations.
+- Themes, bundled and system fonts, localization, high-contrast and
+  dyslexia-friendly options, reduced motion, accessibility checks and large
+  file/search performance work.
+- Legacy Lua language plugins and themes, plus the newer consent-based Lua mod
+  platform described below.
 
-*Note: to provide reserved variables/functions (i.e. `Math`/`parseInt()` in JS) you can have them already set up in the array you return. GriddyCode will handle the rest!*
+Detailed guides:
 
-### Themes
-#### Introduction
-To add a theme, create a file in the **"themes"** folder with any name. (i.e. "dracula.lua"). You will be able to choose it within GriddyCode.
+- [Getting started](docs/user/getting-started.md) — install, first launch, templates, friendly errors
+- [Run configurations and output](docs/user/run-and-output.md)
+- [Language servers](docs/user/language-servers.md)
+- [Git and save points](docs/user/git.md)
+- [Python debugger](docs/user/debugger.md)
+- [Accessibility, localization and performance](docs/user/accessibility-localization-performance.md)
 
-#### Methods
-| Method | Example | Description | Notes |
-| -------- | -------- | -------- | -------- |
-| `set_keywords(property: String, new_color: String)` | `set_keywords("reserved", "#ff00ff")` | Set the color of syntax highlighting. | The second argument must be a hex, `#` being optional. Available colors/properties listed above at `langs`. |
-| `set_gui(property: String, new_color: String)` | `set_gui("background_color", "#ff00ff")` | This method is dedicated to the overall GUI aspect of GriddyCode. | Available properties: `background_color`, `current_line_color`, `selection_color`, `font_color`, `word_highlighted_color`, `selection_background_color`. Properties except `background_color`, if not provided, will be set to a slightly modified version of `background_color`. Although possible, we don't recommend you rely on those & instead set all the values. |
-| `disable_glow()` | `disable_glow()` | Disables the "glow" setting. | This exists because Godot's *glow* seems to mess up on light colors. Not adding this on light themes may result in the entire screen going white. |
+## Keyboard shortcuts
 
-*Note: if the HEX you input is invalid, it will default to #ff0000 (red)*
+The most useful defaults are:
 
-## Publishing
-If you want to use a theme/plugin for **yourself**, you can put it into your [AppData](#where).
+| Action | Shortcut |
+| --- | --- |
+| Open file | `Ctrl` + `O` |
+| Open folder | `Ctrl` + `Shift` + `O` |
+| Save | `Ctrl` + `S` |
+| Close tab | `Ctrl` + `W` |
+| Quick open file | `Ctrl` + `P` |
+| Command palette | `Ctrl` + `Shift` + `P` |
+| Find / replace | `Ctrl` + `F` / `Ctrl` + `H` |
+| Global search | `Ctrl` + `Shift` + `F` |
+| Toggle terminal | `Ctrl` + `` ` `` |
+| Python Journey course | `Ctrl` + `Alt` + `J` |
+| Run current file | `F5` |
+| Run current file in terminal | `F6` |
+| Stop the running program | `Shift` + `F5` |
+| Start/continue debugging | `Ctrl` + `F5` |
+| Stop debugging | `Ctrl` + `Shift` + `F5` |
+| Toggle breakpoint | `F9` |
+| Zoom in/out | `Ctrl` + `=` / `Ctrl` + `-` |
+| Settings | `Ctrl` + `,` |
+| About/introduction | `Ctrl` + `I` |
 
-If you want to **submit** a theme/plugin, open a pull request adding it to `Lua/Plugins` or `Lua/Themes` respectively. If merged, it will be included in the next build.
+Shortcuts can be changed in the keybindings settings and from the command
+palette. The command palette displays the effective shortcut.
 
-# Contributions
-Contributions are heavily appreciated, whether it's for adding Lua plugins, themes, safely exposing more features to Lua, or adding features directly to GriddyCode!
+## Lua extensions
 
-## Notice
-- You will need to install the [Godot Engine](https://godotengine.org/) to run your proposed change & make sure it runs flawlessly.
-- You don't have to submit executables.
-- Use the v4.2 of the engine (currently Latest)
+### Legacy language plugins and themes
 
-## 🐛 Current bugs/needed features:
-### HIGH PRIORITY
-- The `VHS & CRT` shader, on certain themes (One Dark Pro, GitHub Light, etc.), becomes completely white. Works good on GitHub Dark;
-- Light modes get affected by *glow*, while dark modes seem fine.
+The original Lua extension folders remain supported:
 
-### MEDIUM PRIORITY
-- An option in the settings menu (`CTRL` + `,`) to change the font;
-- The current limit for lines is ~1600. If the cursor moves past that amount, the `CodeEdit` node will activate its scrolling, making the camera bug & go out of view. A limit should be implemented so that the camera won't go out of screen.
+| OS | User data folder |
+| --- | --- |
+| Windows | `%APPDATA%\Godot\app_userdata\Qorix` |
+| Linux | `~/.local/share/godot/app_userdata/Qorix` |
+| macOS | `~/Library/Application Support/Godot/app_userdata/Qorix` |
 
-### LOW PRIORITY
-- Making the cat jumping video in the settings menu fade in/out along the actual menu. Currently it ignores the transition;
-- `CTRL` + `P` to open a **quick file picker**, similar to [VSCode](https://code.visualstudio.com/docs/editor/editingevolved#:~:text=Quick%20file%20navigation,-Tip%3A%20You%20can&text=VS%20Code%20provides%20two%20powerful,release%20Ctrl%20to%20open%20it.).
-- Selecting a setting with the property "shader" *should* disable previously-enabled settings with "shader".
-- The `CheckButton` node for each `setting` scene doesn't change with the theme. This affects light themes specifically.
+Place language files in `langs` and theme files in `themes` inside that folder.
+For contributors, repository copies live in [`resources/lua/plugins`](resources/lua/plugins) and
+[`resources/lua/themes`](resources/lua/themes). A language file is named for its extension, such as
+`toml.lua`; a theme can use any filename. Restart Qorix, or switch to
+another extension and back, after changing a legacy plugin.
 
-Please note that creating a Pull Request to fix these features does *not* guarantee its merge. Please don't open a Pull Request unless you are confident you've done a good job.
+Legacy files are intentionally not treated as installed mods: they have no
+mod permissions, consent prompt, sandbox or uninstall action. See the
+[mod-platform migration notes](docs/mods/migration-notes.md)
+before choosing which extension system to use.
+
+Language plugins can provide:
+
+| Method | Purpose |
+| --- | --- |
+| `highlight(keyword, color)` | Highlight a keyword using a built-in syntax color. |
+| `highlight_region(start, end, color, line_only)` | Highlight a delimited region. |
+| `add_comment(comment)` | Add a quote to the `Ctrl` + `L` comments menu. |
+| `detect_functions(content, line, column)` | Return function names for completion. |
+| `detect_variables(content, line, column)` | Return variable names for completion. |
+
+Themes can use `set_keywords(property, color)`, `set_gui(property, color)` and
+`disable_glow()`. The available properties and colors are listed in
+[`resources/lua/definitions.lua`](resources/lua/definitions.lua).
+
+### Mod platform Developer Preview (API 1.0)
+
+The mod platform is opt-in and is **not yet a public 1.0 release**. Mods run
+with explicit consent and permission checks. Distribution, signatures and a
+registry are documented as later release work.
+
+- Start with the [developer guide](docs/mods/developer-guide.md)
+  and [frozen API reference](docs/mods/api-reference.md).
+- Read the [manifest reference](docs/mods/manifest-reference.md),
+  [known issues](docs/mods/known-issues.md) and
+  [feedback guide](docs/mods/feedback.md).
+- Try the [sample mods](samples/mods/README.md), especially the
+  [Platform Tour](samples/mods/griddycode.platform_tour/1.0.0/README.md).
+- Installed mods use `user://mods/<id>/<version>/`; development copies use
+  `user://mods_dev/<id>/<version>/`.
+- Debug builds enable developer mode. Release builds can opt in with
+  `--mod-dev`; saving `main.lua` or `lib/**/*.lua` hot-reloads a development
+  mod after a short debounce.
+- `--mod-preview` or the `mod_preview` export feature labels the build as a
+  Developer Preview. `--safe-mode` starts without the active mod set, and
+  `Ctrl` + `Alt` + `Shift` + `Esc` is the panic shortcut.
+
+The archived [Developer Preview gate record](docs/archive/mod-platform/developer-preview.md)
+contains the automated evidence and the remaining window checks. The archived
+[hardening record](docs/archive/mod-platform/hardening.md) contains the platform
+policy and public-release checklist.
+
+## Building and contributing
+
+```bash
+git clone https://github.com/Nadeem-vibes/Qorix.git
+cd Qorix
+```
+
+Install [Godot 4.7.2](https://godotengine.org/) and open the repository as a
+Godot project. Run the project with `F6`/`F5`, or from a terminal:
+
+```bash
+godot --path .
+```
+
+The normal headless gate is:
+
+```bash
+godot --headless --path . --script res://tests/test_runner.gd
+```
+
+The runner currently reports **7,056 checks across 82 suites** on the verified
+Godot 4.7.2 environment and must exit with code 0. Additional integration
+runners cover Git, the debugger and acceptance behavior; their prerequisites
+and commands are listed in the [manual checklist](docs/developer/manual-test-checklist.md).
+
+For changes:
+
+1. Make the smallest focused change and keep the editor usable on the supported
+   Windows configuration.
+2. Run the headless suite and any relevant integration or manual checks.
+3. Update the related documentation when behavior or configuration changes.
+4. Open a pull request with a clear description and test results. Do not submit
+   generated executables.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the short contributor guide. To
+report a vulnerability privately, follow [SECURITY.md](SECURITY.md).
+
+## Releases
+
+The release workflow runs the headless suite with Godot 4.7.2, exports the
+Windows x86_64 GL Compatibility build, creates an Inno Setup installer and a
+portable ZIP, then publishes them for version tags:
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+The workflow's current application package version is `0.1.0`; update the
+release workflow and installer definition together when changing it.
+
+## License and attribution
+
+Qorix is a derivative work of
+[GriddyCode](https://github.com/face-hh/griddycode) by Face, licensed under
+the [Apache License 2.0](LICENSE). The original copyright notices and license
+text are preserved unchanged; see [NOTICE](NOTICE) for the attribution summary.
+
+Qorix claims no ownership of the upstream code and does not imply endorsement
+by the original author. The fork is maintained by
+[Nadeem-vibes](https://github.com/Nadeem-vibes).
+
+See [LICENSE](LICENSE) for the full Apache License 2.0 text.

@@ -1,0 +1,402 @@
+[
+  {
+    "name": "assets.read_text",
+    "permission": "core"
+  },
+  {
+    "name": "cancel",
+    "permission": "core"
+  },
+  {
+    "name": "clipboard.read",
+    "permission": "clipboard.read"
+  },
+  {
+    "name": "clipboard.write",
+    "permission": "clipboard.write"
+  },
+  {
+    "name": "commands.execute",
+    "permission": "core"
+  },
+  {
+    "name": "commands.register",
+    "permission": "core"
+  },
+  {
+    "name": "commands.unregister",
+    "permission": "core"
+  },
+  {
+    "name": "content.read",
+    "permission": "core"
+  },
+  {
+    "name": "dialogs.confirm",
+    "permission": "core"
+  },
+  {
+    "name": "dialogs.prompt",
+    "permission": "core"
+  },
+  {
+    "name": "docs.active",
+    "permission": "documents.read"
+  },
+  {
+    "name": "docs.close",
+    "permission": "documents.write"
+  },
+  {
+    "name": "docs.create",
+    "permission": "documents.write"
+  },
+  {
+    "name": "docs.cursor",
+    "permission": "documents.read"
+  },
+  {
+    "name": "docs.insert",
+    "permission": "documents.write"
+  },
+  {
+    "name": "docs.is_dirty",
+    "permission": "documents.read"
+  },
+  {
+    "name": "docs.language",
+    "permission": "documents.read"
+  },
+  {
+    "name": "docs.list",
+    "permission": "documents.read"
+  },
+  {
+    "name": "docs.open",
+    "permission": "documents.write"
+  },
+  {
+    "name": "docs.path",
+    "permission": "documents.read"
+  },
+  {
+    "name": "docs.replace",
+    "permission": "documents.write"
+  },
+  {
+    "name": "docs.reveal",
+    "permission": "documents.read"
+  },
+  {
+    "name": "docs.save",
+    "permission": "documents.write"
+  },
+  {
+    "name": "docs.selection",
+    "permission": "documents.read"
+  },
+  {
+    "name": "docs.set_cursor",
+    "permission": "documents.write"
+  },
+  {
+    "name": "docs.set_selection",
+    "permission": "documents.write"
+  },
+  {
+    "name": "docs.set_text",
+    "permission": "documents.write"
+  },
+  {
+    "name": "docs.text",
+    "permission": "documents.read"
+  },
+  {
+    "name": "events.emit",
+    "permission": "core"
+  },
+  {
+    "name": "events.subscribe",
+    "permission": "core"
+  },
+  {
+    "name": "events.unsubscribe",
+    "permission": "core"
+  },
+  {
+    "name": "exercise.advance",
+    "permission": "documents.write"
+  },
+  {
+    "name": "exercise.hint",
+    "permission": "core"
+  },
+  {
+    "name": "exercise.retry",
+    "permission": "documents.write"
+  },
+  {
+    "name": "exercise.start",
+    "permission": "documents.read"
+  },
+  {
+    "name": "exercise.state",
+    "permission": "documents.read"
+  },
+  {
+    "name": "exercise.stop",
+    "permission": "documents.read"
+  },
+  {
+    "name": "exercise.submit",
+    "permission": "documents.read"
+  },
+  {
+    "name": "files.delete",
+    "permission": "files.write"
+  },
+  {
+    "name": "files.exists",
+    "permission": "files.read"
+  },
+  {
+    "name": "files.list",
+    "permission": "files.read"
+  },
+  {
+    "name": "files.mkdir",
+    "permission": "files.write"
+  },
+  {
+    "name": "files.read",
+    "permission": "files.read"
+  },
+  {
+    "name": "files.write",
+    "permission": "files.write"
+  },
+  {
+    "name": "guide.hint",
+    "permission": "core"
+  },
+  {
+    "name": "guide.pause",
+    "permission": "documents.read"
+  },
+  {
+    "name": "guide.reset",
+    "permission": "documents.write"
+  },
+  {
+    "name": "guide.resolve_validation",
+    "permission": "documents.read"
+  },
+  {
+    "name": "guide.resume",
+    "permission": "documents.read"
+  },
+  {
+    "name": "guide.set_display",
+    "permission": "documents.read"
+  },
+  {
+    "name": "guide.set_mode",
+    "permission": "documents.read"
+  },
+  {
+    "name": "guide.set_progression",
+    "permission": "documents.read"
+  },
+  {
+    "name": "guide.set_target",
+    "permission": "documents.read"
+  },
+  {
+    "name": "guide.set_validation",
+    "permission": "documents.read"
+  },
+  {
+    "name": "guide.start",
+    "permission": "documents.read"
+  },
+  {
+    "name": "guide.state",
+    "permission": "documents.read"
+  },
+  {
+    "name": "guide.stop",
+    "permission": "documents.read"
+  },
+  {
+    "name": "keys.bind",
+    "permission": "core"
+  },
+  {
+    "name": "keys.unbind",
+    "permission": "core"
+  },
+  {
+    "name": "log",
+    "permission": "core"
+  },
+  {
+    "name": "module.read",
+    "permission": "core"
+  },
+  {
+    "name": "permissions.has",
+    "permission": "core"
+  },
+  {
+    "name": "progress.all",
+    "permission": "core"
+  },
+  {
+    "name": "progress.get",
+    "permission": "core"
+  },
+  {
+    "name": "progress.increment",
+    "permission": "core"
+  },
+  {
+    "name": "progress.reset",
+    "permission": "core"
+  },
+  {
+    "name": "progress.set",
+    "permission": "core"
+  },
+  {
+    "name": "run.active",
+    "permission": "run"
+  },
+  {
+    "name": "run.file",
+    "permission": "run"
+  },
+  {
+    "name": "run.is_running",
+    "permission": "run"
+  },
+  {
+    "name": "run.stop",
+    "permission": "run"
+  },
+  {
+    "name": "settings.declare",
+    "permission": "core"
+  },
+  {
+    "name": "settings.get",
+    "permission": "core"
+  },
+  {
+    "name": "settings.set",
+    "permission": "core"
+  },
+  {
+    "name": "storage.clear",
+    "permission": "core"
+  },
+  {
+    "name": "storage.delete",
+    "permission": "core"
+  },
+  {
+    "name": "storage.get",
+    "permission": "core"
+  },
+  {
+    "name": "storage.keys",
+    "permission": "core"
+  },
+  {
+    "name": "storage.set",
+    "permission": "core"
+  },
+  {
+    "name": "tasks.schedule",
+    "permission": "core"
+  },
+  {
+    "name": "timer.schedule",
+    "permission": "core"
+  },
+  {
+    "name": "ui.close_dialog",
+    "permission": "core"
+  },
+  {
+    "name": "ui.dialog",
+    "permission": "core"
+  },
+  {
+    "name": "ui.focus",
+    "permission": "core"
+  },
+  {
+    "name": "ui.layout.set_visible",
+    "permission": "ui.layout"
+  },
+  {
+    "name": "ui.mount",
+    "permission": "core"
+  },
+  {
+    "name": "ui.notify",
+    "permission": "core"
+  },
+  {
+    "name": "ui.on",
+    "permission": "core"
+  },
+  {
+    "name": "ui.set_visible",
+    "permission": "core"
+  },
+  {
+    "name": "ui.shell.exit",
+    "permission": "ui.shell"
+  },
+  {
+    "name": "ui.shell.set_content_insets",
+    "permission": "ui.shell"
+  },
+  {
+    "name": "ui.shell.set_editor_visible",
+    "permission": "ui.shell"
+  },
+  {
+    "name": "ui.shell.takeover",
+    "permission": "ui.shell"
+  },
+  {
+    "name": "ui.theme.token",
+    "permission": "core"
+  },
+  {
+    "name": "ui.unmount",
+    "permission": "core"
+  },
+  {
+    "name": "ui.update",
+    "permission": "core"
+  },
+  {
+    "name": "workspace.has_workspace",
+    "permission": "workspace.read"
+  },
+  {
+    "name": "workspace.list",
+    "permission": "workspace.read"
+  },
+  {
+    "name": "workspace.name",
+    "permission": "workspace.read"
+  },
+  {
+    "name": "workspace.root",
+    "permission": "workspace.read"
+  }
+]

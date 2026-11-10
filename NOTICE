@@ -1,0 +1,49 @@
+Qorix NOTICE
+============
+
+Qorix is an extensively modified and independently developed fork of
+GriddyCode. Both are distributed under the Apache License, Version 2.0.
+
+Original upstream project
+------------------------
+
+  GriddyCode — https://github.com/face-hh/griddycode
+  Originally created by Face (https://github.com/face-hh).
+
+  Copyright (c) 2024 Face and the GriddyCode contributors
+
+Qorix modifications
+-------------------
+
+  Copyright (c) 2026 Nadeem-vibes (https://github.com/Nadeem-vibes)
+  and the Qorix contributors
+
+Qorix claims no ownership of the upstream code. Per the Apache License 2.0
+(Section 4), the original license text is preserved unchanged in the LICENSE
+file, and changes to the upstream code have been made throughout the Qorix
+tree. Nothing in this file removes, alters or limits the original copyright
+notices; the upstream author does not endorse Qorix.
+
+Bundled third-party components
+------------------------------
+
+Bundled components retain their own licenses. Notices found in the tree:
+
+- Godot Xterm — addons/godot_xterm/ — MIT License
+  Copyright (c) 2020-2025 Leroy Hopson and GodotXterm contributors
+- luaAPI — addons/luaAPI/ — MIT License
+  Copyright (c) 2021-present Trey Moller
+- Discord SDK GD — addons/discord-sdk-gd/ — the vendored copy does not
+  include a license file; contact its author for terms
+- cursor-shaders — resources/third_party/cursor-shaders/ — MIT License
+  Copyright (c) 2026 Sahaj Bhatt
+- Symbols Nerd Font — resources/fonts/ — MIT License
+  Copyright (c) 2014 Ryan L McIntyre
+- Fira Code fonts — resources/fonts/ — SIL Open Font License 1.1
+  (Nikita Prokopov and the Fira Code contributors)
+- Noto Color Emoji — resources/fonts/ — SIL Open Font License 1.1
+  (Google Inc.)
+
+Bundled font files under resources/fonts/ are used in accordance with their
+own licenses; the app does not require any of these fonts to be installed
+system-wide.

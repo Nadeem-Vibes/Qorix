@@ -1,0 +1,3 @@
+-- Plain text: no syntax highlighting.
+-- This plugin exists so untitled buffers and .txt files load cleanly instead
+-- of showing the "unsupported file" warning.

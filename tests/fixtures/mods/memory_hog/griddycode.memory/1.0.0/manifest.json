@@ -1,0 +1,13 @@
+{
+	"schema": 1,
+	"id": "griddycode.memory",
+	"name": "Memory Hog Fixture",
+	"version": "1.0.0",
+	"api": 1,
+	"min_editor": "1.0.0",
+	"entry": "main.lua",
+	"author": "Qorix tests",
+	"description": "Allocates past the per-state memory limit.",
+	"license": "MIT",
+	"permissions": ["core"]
+}

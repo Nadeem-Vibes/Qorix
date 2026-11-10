@@ -1,0 +1,93 @@
+{
+	"version": 1,
+	"language": "c",
+	"display": "C",
+	"entries": [
+		{
+			"term": "#include",
+			"aliases": ["include", "include directive"],
+			"plain": "Copies in another file of declarations before your program is compiled. stdio.h provides printf.",
+			"example": "#include <stdio.h>"
+		},
+		{
+			"term": "int main",
+			"aliases": ["main", "main()"],
+			"plain": "The function where every C program starts. Returning 0 means the program finished successfully.",
+			"example": "int main(void) {\n    return 0;\n}"
+		},
+		{
+			"term": "printf",
+			"aliases": ["printf()"],
+			"plain": "Prints formatted text to the screen. Use %d for a whole number, %f for a decimal, and %s for text.",
+			"example": "printf(\"Hello, %s!\\n\", \"Ada\");"
+		},
+		{
+			"term": "scanf",
+			"aliases": ["scanf()"],
+			"plain": "Reads formatted input from the keyboard. Pass the address of a variable with & so scanf can fill it in.",
+			"example": "int age;\nscanf(\"%d\", &age);"
+		},
+		{
+			"term": "return",
+			"plain": "Leaves the current function and optionally sends a value back to whoever called it.",
+			"example": "return 0;"
+		},
+		{
+			"term": "int",
+			"plain": "A whole-number type, such as 3 or -12.",
+			"example": "int score = 10;"
+		},
+		{
+			"term": "char",
+			"plain": "A single character type. A char array is often used for text in C.",
+			"example": "char initial = 'A';"
+		},
+		{
+			"term": "float",
+			"plain": "A number type that can hold a decimal point. double stores more precision.",
+			"example": "float price = 4.5f;"
+		},
+		{
+			"term": "if",
+			"plain": "Runs the following block only when a condition is true.",
+			"example": "if (score > 10) {\n    printf(\"You win!\\n\");\n}"
+		},
+		{
+			"term": "else",
+			"plain": "Runs when the matching if condition was false.",
+			"example": "if (ready) {\n    start();\n} else {\n    wait();\n}"
+		},
+		{
+			"term": "for",
+			"plain": "Repeats a block. The three parts set up a counter, test it, and change it after each pass.",
+			"example": "for (int i = 0; i < 3; i++) {\n    printf(\"%d\\n\", i);\n}"
+		},
+		{
+			"term": "while",
+			"plain": "Repeats a block while a condition stays true.",
+			"example": "while (lives > 0) {\n    play();\n}"
+		},
+		{
+			"term": "array",
+			"plain": "Several values of the same type stored together. Indexes start at 0.",
+			"example": "int numbers[3] = {1, 2, 3};\nprintf(\"%d\\n\", numbers[0]);"
+		},
+		{
+			"term": "struct",
+			"plain": "Groups several related values under one type name.",
+			"example": "struct Point {\n    int x;\n    int y;\n};"
+		},
+		{
+			"term": "pointer",
+			"aliases": ["*", "address"],
+			"plain": "A value that stores the memory address of something else. The * symbol declares or follows a pointer.",
+			"example": "int score = 10;\nint *p = &score;\nprintf(\"%d\\n\", *p);"
+		},
+		{
+			"term": "malloc",
+			"aliases": ["malloc()", "free"],
+			"plain": "Asks the system for a block of memory at runtime. Release it with free() when you are done.",
+			"example": "int *numbers = malloc(3 * sizeof(int));\nfree(numbers);"
+		}
+	]
+}

@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://duvkqtnjesaw1"
+path="res://.godot/imported/cursor_sweep.glsl-28a38273889517496c25160a0b454242.res"
+
+[deps]
+
+source_file="res://resources/third_party/cursor-shaders/cursor_sweep.glsl"
+dest_files=["res://.godot/imported/cursor_sweep.glsl-28a38273889517496c25160a0b454242.res"]
+
+[params]
+

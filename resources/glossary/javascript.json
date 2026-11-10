@@ -1,0 +1,104 @@
+{
+	"version": 1,
+	"language": "javascript",
+	"display": "JavaScript",
+	"entries": [
+		{
+			"term": "let",
+			"plain": "Creates a variable whose value can change later. It stays inside the block where it was declared.",
+			"example": "let score = 0;\nscore = score + 1;"
+		},
+		{
+			"term": "const",
+			"plain": "Creates a variable that cannot be reassigned. Use it for values that stay the same.",
+			"example": "const name = \"Ada\";"
+		},
+		{
+			"term": "var",
+			"plain": "The older way to create a variable. Prefer let or const in new code.",
+			"example": "var oldStyle = true;"
+		},
+		{
+			"term": "function",
+			"plain": "Declares a reusable block of code with a name.",
+			"example": "function greet(name) {\n  return \"Hello, \" + name;\n}"
+		},
+		{
+			"term": "return",
+			"plain": "Sends a value back from a function and stops running that function.",
+			"example": "function double(n) {\n  return n * 2;\n}"
+		},
+		{
+			"term": "if",
+			"plain": "Runs a block only when a condition is true.",
+			"example": "if (score > 10) {\n  console.log(\"You win!\");\n}"
+		},
+		{
+			"term": "else",
+			"plain": "Runs when the matching if condition was false.",
+			"example": "if (ready) {\n  start();\n} else {\n  wait();\n}"
+		},
+		{
+			"term": "for",
+			"plain": "Repeats a block, usually once for each item or a counted number of times.",
+			"example": "for (let i = 0; i < 3; i++) {\n  console.log(i);\n}"
+		},
+		{
+			"term": "while",
+			"plain": "Repeats a block while a condition stays true.",
+			"example": "while (lives > 0) {\n  play();\n}"
+		},
+		{
+			"term": "console.log",
+			"aliases": ["console", "log"],
+			"plain": "Prints a value to the browser's developer console. It is the usual way to check what your code is doing.",
+			"example": "console.log(\"Hello from JavaScript\");"
+		},
+		{
+			"term": "document.querySelector",
+			"aliases": ["querySelector", "document.querySelector()"],
+			"plain": "Finds the first element that matches a CSS selector so JavaScript can read or change it.",
+			"example": "const button = document.querySelector(\"#cheer\");"
+		},
+		{
+			"term": "addEventListener",
+			"aliases": ["addEventListener()"],
+			"plain": "Tells an element to run a function when something happens, such as a click.",
+			"example": "button.addEventListener(\"click\", () => {\n  console.log(\"Clicked!\");\n});"
+		},
+		{
+			"term": "arrow function",
+			"aliases": ["=>", "arrow"],
+			"plain": "A short way to write a function. The part before => lists the inputs; the part after is the body.",
+			"example": "const double = (n) => n * 2;"
+		},
+		{
+			"term": "array",
+			"aliases": ["list"],
+			"plain": "An ordered collection written with square brackets. Items are numbered starting at 0.",
+			"example": "const colors = [\"red\", \"green\", \"blue\"];\nconsole.log(colors[0]);"
+		},
+		{
+			"term": "object",
+			"plain": "A collection of named values written with curly braces. Read a value with a dot or square brackets.",
+			"example": "const person = { name: \"Ada\", age: 36 };\nconsole.log(person.name);"
+		},
+		{
+			"term": "JSON",
+			"aliases": ["JSON.parse", "JSON.stringify"],
+			"plain": "A text format for data that JavaScript can turn into objects and back again.",
+			"example": "const data = JSON.parse('{\"name\":\"Ada\"}');"
+		},
+		{
+			"term": "fetch",
+			"aliases": ["fetch()"],
+			"plain": "Asks a server for data and returns a promise for the response.",
+			"example": "const response = await fetch(\"data.json\");"
+		},
+		{
+			"term": "textContent",
+			"plain": "The plain text inside an element. Setting it replaces what the element shows.",
+			"example": "message.textContent = \"Hello!\";"
+		}
+	]
+}
