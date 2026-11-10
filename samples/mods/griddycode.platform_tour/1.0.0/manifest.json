@@ -1,0 +1,21 @@
+{
+	"schema": 1,
+	"id": "griddycode.platform_tour",
+	"name": "Platform Tour",
+	"version": "1.0.0",
+	"api": 1,
+	"min_editor": "1.4.0",
+	"entry": "main.lua",
+	"author": "Qorix",
+	"description": "A guided lesson and self-check for the frozen API 1.0 Developer Preview.",
+	"license": "MIT",
+	"permissions": ["documents.read", "documents.write"],
+	"settings": [
+		{
+			"key": "strict_typing",
+			"type": "bool",
+			"default": false,
+			"label": "Strict typing"
+		}
+	]
+}

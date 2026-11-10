@@ -3,7 +3,6 @@
 Builds/*
 build/
 dist/
-samples/
 # Temporary files
 *.TMP
 ~*

@@ -1,0 +1,43 @@
+{
+	"schema": 1,
+	"id": "griddycode.python_journey",
+	"name": "Python Learning Journey",
+	"version": "1.0.0",
+	"api": 1,
+	"min_editor": "1.4.0",
+	"entry": "main.lua",
+	"author": "Qorix",
+	"description": "A five-lesson Python course: shell takeover, hybrid typing and freeform exercises, progress, hints, accessibility text and a partial-UI fallback.",
+	"license": "MIT",
+	"permissions": [
+		"ui.shell",
+		"documents.read",
+		"documents.write",
+		"files.read",
+		"files.write",
+		"workspace.read",
+		"run"
+	],
+	"settings": [
+		{
+			"key": "strict_mode",
+			"type": "bool",
+			"default": true,
+			"label": "Strict typing (block wrong keys)"
+		},
+		{
+			"key": "show_hints",
+			"type": "bool",
+			"default": true,
+			"label": "Show hints automatically"
+		},
+		{
+			"key": "font_size",
+			"type": "int",
+			"default": 16,
+			"min": 12,
+			"max": 32,
+			"label": "Lesson text size"
+		}
+	]
+}

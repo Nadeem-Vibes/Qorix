@@ -1,0 +1,13 @@
+{
+	"schema": 1,
+	"id": "griddycode.word_count",
+	"name": "Word Count",
+	"version": "1.0.0",
+	"api": 1,
+	"min_editor": "1.3.0",
+	"entry": "main.lua",
+	"author": "Qorix",
+	"description": "A partial-UI sample that reads the active document and updates a dock when documents change.",
+	"license": "MIT",
+	"permissions": ["documents.read"]
+}

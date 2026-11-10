@@ -1,0 +1,22 @@
+{
+	"schema": 1,
+	"id": "griddycode.preview_lab",
+	"name": "Preview Lab",
+	"version": "1.0.0",
+	"api": 1,
+	"min_editor": "1.4.0",
+	"entry": "main.lua",
+	"author": "Qorix",
+	"description": "Developer Preview sample: a storage-backed activation counter, a setting, commands and a live panel for testing developer-mode hot reload.",
+	"license": "MIT",
+	"homepage": "https://github.com/Nadeem-vibes/Qorix",
+	"permissions": ["core"],
+	"settings": [
+		{
+			"key": "greeting",
+			"type": "string",
+			"default": "Hello from a development mod",
+			"label": "Dock greeting"
+		}
+	]
+}
