@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "id": "griddycode.preview_lab",
+  "name": "Preview Lab",
+  "version": "1.0.0",
+  "api": 1,
+  "min_editor": "1.4.0",
+  "entry": "main.lua",
+  "author": "Qorix",
+  "description": "Developer preview lab sample",
+  "license": "MIT",
+  "permissions": [
+    "core"
+  ],
+  "settings": [
+    {
+      "key": "mode",
+      "type": "string",
+      "default": "lab",
+      "label": "Mode"
+    }
+  ]
+}

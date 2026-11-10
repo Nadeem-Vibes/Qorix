@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "id": "griddycode.python_journey",
+  "name": "Python Learning Journey",
+  "version": "1.0.0",
+  "api": 1,
+  "min_editor": "1.4.0",
+  "entry": "main.lua",
+  "author": "Qorix",
+  "description": "Python Learning Journey sample",
+  "license": "MIT",
+  "permissions": [
+    "core",
+    "ui.shell",
+    "documents.read",
+    "documents.write",
+    "files.read",
+    "files.write",
+    "workspace.read",
+    "run"
+  ],
+  "settings": [
+    {
+      "key": "strict_mode",
+      "type": "bool",
+      "default": false,
+      "label": "Strict mode"
+    },
+    {
+      "key": "show_hints",
+      "type": "bool",
+      "default": true,
+      "label": "Show hints"
+    },
+    {
+      "key": "font_size",
+      "type": "int",
+      "default": 16,
+      "min": 12,
+      "max": 32,
+      "label": "Font size"
+    }
+  ]
+}

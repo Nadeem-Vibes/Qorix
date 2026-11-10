@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "griddycode.word_count",
+  "name": "Word Count",
+  "version": "1.0.0",
+  "api": 1,
+  "min_editor": "1.4.0",
+  "entry": "main.lua",
+  "author": "Qorix",
+  "description": "Sample mod",
+  "license": "MIT",
+  "permissions": [
+    "core",
+    "documents.read"
+  ],
+  "settings": []
+}

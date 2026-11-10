@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "id": "griddycode.hello_dock",
+  "name": "Hello Dock",
+  "version": "1.0.0",
+  "api": 1,
+  "min_editor": "1.4.0",
+  "entry": "main.lua",
+  "author": "Qorix",
+  "description": "Sample mod",
+  "license": "MIT",
+  "permissions": [
+    "core"
+  ],
+  "settings": []
+}

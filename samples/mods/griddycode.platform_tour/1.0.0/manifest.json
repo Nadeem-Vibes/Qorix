@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "id": "griddycode.platform_tour",
+  "name": "Platform Tour",
+  "version": "1.0.0",
+  "api": 1,
+  "min_editor": "1.4.0",
+  "entry": "main.lua",
+  "author": "Qorix",
+  "description": "Guided platform tour",
+  "license": "MIT",
+  "permissions": [
+    "core",
+    "documents.read",
+    "documents.write"
+  ],
+  "settings": [
+    {
+      "key": "strict_mode",
+      "type": "bool",
+      "default": false,
+      "label": "Strict mode"
+    }
+  ]
+}

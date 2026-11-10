@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "id": "griddycode.note_taker",
+  "name": "Note Taker",
+  "version": "1.0.0",
+  "api": 1,
+  "min_editor": "1.4.0",
+  "entry": "main.lua",
+  "author": "Qorix",
+  "description": "Sample mod",
+  "license": "MIT",
+  "permissions": [
+    "core",
+    "files.read",
+    "files.write",
+    "workspace.read"
+  ],
+  "settings": []
+}
