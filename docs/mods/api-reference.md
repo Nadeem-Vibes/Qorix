@@ -3,7 +3,7 @@
 Status: **frozen Developer Preview contract** (`API_SEMVER = "1.0.0"`,
 `API_STATUS = "frozen"`). The machine-readable surface is
 `tests/fixtures/mods/api_v1_surface.json`: 100 native methods, sorted, SHA-256
-`e27c1c0d341956d77751814df97a98bbea1724c462547c0f22f61effb0ff2467`.
+`f0b0f31993c7924ceae2301d902c5ff26ac7510582a86bc17797dbe9fb6bbf09`.
 
 From 1.0 onward only **additive** changes are allowed inside major version 1. A
 breaking change requires API 2 and an adapter; see

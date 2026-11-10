@@ -9,7 +9,11 @@ const Manifest = preload("res://src/features/mods/mod_manifest.gd")
 const Permissions = preload("res://src/features/mods/mod_permissions.gd")
 
 const GOLDEN := "res://tests/fixtures/mods/api_v1_surface.json"
-const GOLDEN_SHA256 := "e27c1c0d341956d77751814df97a98bbea1724c462547c0f22f61effb0ff2467"
+## The hash pins the fixture as committed in git (LF-only, per .gitattributes).
+## A stray CRLF in a local checkout is invisible to `git status` (text=auto
+## normalizes it away) but changes the raw bytes, so the constant must match
+## the committed artifact, not a working-tree editor artifact.
+const GOLDEN_SHA256 := "f0b0f31993c7924ceae2301d902c5ff26ac7510582a86bc17797dbe9fb6bbf09"
 
 const DOCS := "res://docs/mods"
 const API_REFERENCE := DOCS + "/api-reference.md"

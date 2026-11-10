@@ -12,7 +12,7 @@ experimental. The Developer Preview freezes them as **API 1.0.0**:
 | `Api.API_STATUS` | `"frozen"` |
 | `Api.API_FROZEN` | `true` |
 | Native methods | 100 |
-| Golden surface hash | `e27c1c0d341956d77751814df97a98bbea1724c462547c0f22f61effb0ff2467` |
+| Golden surface hash | `f0b0f31993c7924ceae2301d902c5ff26ac7510582a86bc17797dbe9fb6bbf09` |
 
 No method was renamed, removed or re-annotated to produce 1.0. The freeze makes
 the existing surface a promise; it is not a redesign. Manifests that declared
